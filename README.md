@@ -90,7 +90,7 @@ function
 
   **Task**                                                                                                       **Duration Per Member (Hours)**
   -------------------------------------------------------------------------------------------------------------- ---------------------------------
-  Installing and learning frameworks and environments (visual studio, xampp, react, HTML CSS JS, laravel, git)   14
+  Installing and learning frameworks and environments (visual studio, xampp, react, NodeJS, HTML CSS JS, laravel, git)   14
   Designing the structure of our webapp and additional graphics                                                  2
   Making of pitch video and poster                                                                               3
   Setting up primary sql database, generating stylesheet and implementing basic user authentication              8
