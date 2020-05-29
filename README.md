@@ -1,79 +1,106 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+**Proposed Level of Achievement :** Gemini
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+**Target Audience:**
 
-## About Laravel
+NUS hostel students/ clubs and organisations
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Future security extensions would allow this app to be used by companies
+as well
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**Functionalities:**
+====================
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   Interface for leaders/organizers to book facilities and event
+    timings
 
-## Learning Laravel
+-   Update events quickly to involved members' calendars
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Allows users to view their friends' calendars and coordinate meeting
+    times
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Techstack:**
 
-## Laravel Sponsors
++-----------------+---------------------------------------------------+
+| **Tech chosen** | **Rationale**                                     |
++=================+===================================================+
+| ReactJS         | 1.  Faster rendering for single page apps         |
+|                 |                                                   |
+|                 | 2.  Strong and reactive community that can        |
+|                 |     provide assistance along the way              |
+|                 |                                                   |
+|                 | 3.  React Native available to ease mobile app     |
+|                 |     development if necessary                      |
++-----------------+---------------------------------------------------+
+| Laravel         | 1.  Smooth authentication and authorization       |
+|                 |     integration for a social webapp like ours     |
+|                 |                                                   |
+|                 | 2.  Easy to understand URL routing configuration  |
+|                 |                                                   |
+|                 | 3.  One of the faster and more popular frameworks |
+|                 |     at the moment                                 |
++-----------------+---------------------------------------------------+
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**How are we different from similar platforms?**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+-   Google Calendar:
 
-## Contributing
+1.  Google calendar does not allow the quick view of common free times
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2.  Google calendar does not facilitate deconfliction of venues and
+    other similar facilitieS
 
-## Code of Conduct
+**Program Flow**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+![](media/image2.png){width="6.270833333333333in"
+height="3.5277777777777777in"}
 
-## Security Vulnerabilities
+**DATA FLOW:** Below is a visual representation of how our database will look like and how they will be linked together in our webapp
+=====================================================================================================================================
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![](media/image1.png){width="6.270833333333333in" height="3.5277777777777777in"}
+================================================================================
 
-## License
+**Program Plan:**
+=================
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**1st week of June:** Finalized minimum data sets and app's basic
+navigation functionalities such as user authentication and event
+creation/view
+
+**2nd week of June:** First prototype launched -- Testing and debugging
+phrase for single user experience
+
+**3rd week of June:** Starting building user roles and permissions for
+the different roles. Implementation of the social aspects.
+
+**4th week of June:** Testing and debugging, making sure the added
+functions are already working well with each other
+
+**1st week of July:** Implementation of facilities management for admin
+users
+
+**2nd week of July:** Implementation of the schedule deconfliction
+function
+
+**3rd week of July:** Testing and debugging
+
+**4th week of July:** Final enhancement (if any)
+
+**Current Progress**
+
+  **Task**                                                                                                       **Duration Per Member (Hours)**
+  -------------------------------------------------------------------------------------------------------------- ---------------------------------
+  Installing and learning frameworks and environments (visual studio, xampp, react, HTML CSS JS, laravel, git)   14
+  Designing the structure of our webapp and additional graphics                                                  2
+  Making of pitch video and poster                                                                               3
+  Setting up primary sql database, generating stylesheet and implementing basic user authentication              8
+  Trying to implement calendar                                                                                   3
+  Total Hours                                                                                                    40
+
+We have finished 47 hours respectively towards the requirement. There
+are still a lot of technical areas that we need to brush up on in
+regards to the techstack we have chosen but we believe we are still on
+schedule.
+
+**Pitch Video :**
+[[https://youtu.be/rPXuPctWsg4?t=28m1s]{.underline}](https://youtu.be/rPXuPctWsg4?t=28m1s)
