@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       },
       eventClick: function(element){
+        clearMessages('#message');
         resetForm("#formEvent");
         $("#modalCalendar").modal('show');
         $("#modalCalendar #titleModal").text('Modify Event');
@@ -92,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sendEvent(routeEvents('routeEventUpdate'), newEvent)
       },
       select: function(element){
+        clearMessages('#message');
         resetForm("#formEvent");
         $("#modalCalendar").modal('show');
         $("#modalCalendar #titleModal").text('Add Event');
