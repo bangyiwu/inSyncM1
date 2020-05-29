@@ -14,3 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'FullCalendarController@index') ->name('index');
+Route::get('/load-events', 'EventController@loadEvents') ->name('routeLoadEvents');
+Route::put('/events-update', 'EventController@update') ->name('routeEventUpdate');
+Route::post('/events-store', 'EventController@store') ->name('routeEventStore');
