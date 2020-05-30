@@ -12,10 +12,6 @@ class PagesController extends Controller
         return view('pages.index')->with('title', $title);
     }
 
-    public function addevent() {
-        return view('pages.addevent');
-    }
-
     public function myevents() {
         return view('pages.myevents');
     }

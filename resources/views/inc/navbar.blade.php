@@ -1,28 +1,34 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    @if(Auth::guest())
         <a class="navbar-brand" href="{{ url('/') }}">
             {{config('app.name', 'inSync')}}
         </a>
+    @endif
+    @if(!Auth::guest())
+        <a class="navbar-brand" href="{{ url('/dashboard') }}">
+            {{config('app.name', 'inSync')}}
+        </a>
+    @endif
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/myevents">My Events</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/addevent">Add Event</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Social</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="/viewgroups">My Groups</a>
-                        <a class="dropdown-item" href="/editgroups">Edit Groups</a>
-                    </div>
-                  </li>
-              </ul>
+            @if(!Auth::guest())
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="/myevents">My Events</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Social</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="/viewgroups">My Groups</a>
+                            <a class="dropdown-item" href="/editgroups">Edit Groups</a>
+                        </div>
+                    </li>
+                </ul>
+              @endif
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
@@ -43,6 +49,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/dashboard">
+                                Dashboard
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

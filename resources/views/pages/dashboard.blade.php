@@ -7,5 +7,6 @@
 
 @section('calendar')
     @include('fullcalendar.master')
+    @include('fullcalendar.modal-calendar')
 @endsection
 

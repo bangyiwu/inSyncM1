@@ -14,7 +14,7 @@
 
 </head>
 <body>
-
+@include('inc.navbar')
 @include('fullcalendar.modal-calendar')
 
   <div id='wrap'>
