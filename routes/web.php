@@ -33,3 +33,7 @@ Route::put('/events-update', 'EventController@update') ->name('routeEventUpdate'
 Route::post('/events-store', 'EventController@store') ->name('routeEventStore');
 Route::delete('/events-delete', 'EventController@destroy') ->name('routeEventDelete');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

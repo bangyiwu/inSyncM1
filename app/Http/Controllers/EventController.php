@@ -10,11 +10,21 @@ class EventController extends Controller
 {
     public function loadEvents(){
         $events = Event::all();
-        return response()->json($events);
+        $userevents = $events->filter(function($item){
+            return $item->user_id == auth()->user()->id;
+        })->values();
+        return response()->json($userevents);
     }
 
     public function store(EventRequest $request){
-        Event::create($request->all());
+        Event::create([
+            'title' => request('title'),
+            'start' => request('start'),
+            'end' => request('end'),
+            'color' => request('color'),
+            'description' => request('description'),
+            'user_id' => auth()->user()->id,
+        ]);
         return response()->json(true);
     }
 
@@ -23,7 +33,6 @@ class EventController extends Controller
         $event = Event::where('id',$request->id)->first();
         $event->fill($request->all());
         $event->save();
-
         return response()->json(true);
     }
 
