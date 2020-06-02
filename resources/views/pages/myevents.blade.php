@@ -18,7 +18,7 @@
             
         </div>  
          @foreach ($events as $innerevent)
-            @if(($event->location == $innerevent->location) && ($event->start == $innerevent->start))
+            @if(($event->location == $innerevent->location) && ($event->start == $innerevent->start) && ($event->id !== $innerevent->id))
             <div class="overlap">
                 {{$innerevent->title}} booked by {{$innerevent->user_id}}
             </div>
