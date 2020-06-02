@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 #Route::get('/', 'FullCalendarController@index') ->name('index');
 
 Route::get('/', 'PagesController@index');
-Route::get('/myevents', 'PagesController@myevents');
+Route::get('/myevents', 'EventController@index');
 Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
-Route::get('/viewgroups', 'PagesController@viewgroups');
 Route::get('/editgroups', 'PagesController@editgroups');
+Route::get('/viewgroups', 'UserController@index' );
 
 Auth::routes();
 

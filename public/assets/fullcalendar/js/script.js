@@ -32,12 +32,15 @@ $(function($){
 
         let description = $("#modalCalendar textarea[name='description']").val();
         
+        let location = $("#modalCalendar textarea[name='location']").val();
+        
         let Event = {
             title:title,
             start:start,
             end:end,
             color:color,
             description:description,
+            location:location,
         };
         let route;
 

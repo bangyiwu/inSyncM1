@@ -41,6 +41,12 @@
                       <textarea name="description" id="description" cols="40" rows = "4"></textarea>
                     </div>
                   </div>
+                  <div class="form-group row">
+                    <label for="location" class="col-sm-4 col-form-label">Location of Event</label>
+                    <div class="col-sm-8">
+                      <textarea name="location" id="location" cols="40" rows = "1"></textarea>
+                    </div>
+                  </div>
             </form>
         </div>
         <div class="modal-footer">

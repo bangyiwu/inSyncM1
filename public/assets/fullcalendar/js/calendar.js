@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let description = element.event.extendedProps.description;
         $("#modalCalendar textarea[name='description']").val(description);
 
+        let location = element.event.extendedProps.location;
+        $("#modalCalendar textarea[name='location']").val(location);
+
       },
       eventResize: function(element){
         let start = moment(element.event.start).format("YYYY-MM-DD HH:mm:ss");

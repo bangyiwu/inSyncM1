@@ -44,3 +44,11 @@ body {
     float: right;
     width: 900px;
   }
+
+  .flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  

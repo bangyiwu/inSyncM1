@@ -24,6 +24,7 @@ class EventController extends Controller
             'color' => request('color'),
             'description' => request('description'),
             'user_id' => auth()->user()->id,
+            'location' => request('location'),
         ]);
         return response()->json(true);
     }
@@ -39,5 +40,13 @@ class EventController extends Controller
     public function destroy(Request $request){
         Event::where('id', $request->id)->delete();
         return response()->json(true);
+    }
+
+    public function index()
+    {
+        $events = Event::all();
+        return view('pages.myevents', [
+            'events' => $events,
+            ]);
     }
 }

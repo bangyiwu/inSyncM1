@@ -9,21 +9,23 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use SoftDeletes; 
-    protected $fillable=['title', 'start', 'end', 'color', 'description', 'user_id'];
+    protected $fillable=['title', 'start', 'end', 'color', 'description', 'user_id', 'location'];
+    
+    protected $dateFormat = 'Y-m-d H:i';
 
-    public function getStartAttribute($value){
-        $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('Y-m-d');
-        $timeStart = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('H:i:s');
+    //public function getStartAttribute($value){
+       // $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('Y-m-d');
+       // $timeStart = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('H:i:s');
 
-        return $this->start = ($timeStart=='00:00:00' ? $dateStart : $value);
-    }
+       // return $this->start = ($timeStart=='00:00:00' ? $dateStart : $value);
+    //}
 
-    public function getEndAttribute($value){
-        $dateEnd = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('Y-m-d');
-        $timeEnd = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('H:i:s');
+   // public function getEndAttribute($value){
+        //$dateEnd = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('Y-m-d');
+        //$timeEnd = Carbon::createFromFormat('Y-m-d H:i:s', $value) -> format('H:i:s');
 
-        return $this->end = ($timeEnd=='00:00:00' ? $dateEnd : $value);
-    }
+       // return $this->end = ($timeEnd=='00:00:00' ? $dateEnd : $value);
+    //}
 
     public function user(){
         return $this->belongsTo(User::class);
