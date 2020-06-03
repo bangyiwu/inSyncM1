@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PagesController@index');
 Route::get('/myevents', 'EventController@index');
+Route::get('/myevents/{id}', 'EventController@show');
 Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
 Route::get('/editgroups', 'PagesController@editgroups');

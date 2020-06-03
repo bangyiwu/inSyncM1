@@ -49,4 +49,10 @@ class EventController extends Controller
             'events' => $events,
             ]);
     }
+    public function show($id) {
+        $id = intval($id);
+        $event = Event::findOrFail($id);
+        $events = Event::all();
+        return view('pages.show', ['event' => $event, 'events'=>$events]);
+    }
 }
