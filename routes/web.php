@@ -23,6 +23,8 @@ Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
 Route::get('/editgroups', 'PagesController@editgroups');
 Route::get('/viewgroups', 'UserController@index' );
+Route::get('/viewgroups/{start}', 'EventController@time' );
+Route::get('/viewgroups/schedule', 'EventController@schedule' );
 
 Auth::routes();
 

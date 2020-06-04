@@ -10,7 +10,7 @@
             <th scope="col">Event</th>
             <th scope="col">Location</th>
             <th scope="col">Start time</th>
-            <th scope="col">Location conflict</th>
+            <th scope="col">Conflict</th>
           </tr>
         </thead>
         <tbody>

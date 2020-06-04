@@ -25,4 +25,5 @@
           @endforeach
         </tbody>
       </table>
+      <p><a href="/viewgroups/schedule">Schedule event with this group</a></p>
 @endsection

@@ -1,10 +1,10 @@
 @extends('layouts.app')
     
 @section('content')
-    <p>Details of {{$event->title}} on {{$event->start}}</p>
-    <p>Description:</p>
+    <h2>Details of {{$event->title}} on {{$event->start}}</h2>
+    <h3>Description:</h3>
     <p>{{$event->description}}</p>
-    <p>This event clashes with:</p>
+    <h3>This event clashes with:</h3>
     <p>
          @foreach ($events as $innerevent)
             @if(($event->location == $innerevent->location) && ($event->start == $innerevent->start) && ($event->id !== $innerevent->id))

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\User;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 
@@ -54,5 +55,11 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $events = Event::all();
         return view('pages.show', ['event' => $event, 'events'=>$events]);
+    }
+    public function time($start) {
+        //$overlaps = Event::where('start','=',$start)->first();
+        $events = Event::all();
+        $users = User::all();
+        return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $start]);
     }
 }
