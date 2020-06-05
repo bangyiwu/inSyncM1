@@ -22,9 +22,14 @@ Route::get('/myevents/{id}', 'EventController@show');
 Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
 Route::get('/editgroups', 'PagesController@editgroups');
-Route::get('/viewgroups', 'UserController@index' );
-Route::get('/viewgroups/{start}', 'EventController@time' );
-Route::get('/viewgroups/schedule', 'EventController@schedule' );
+Route::get('/viewgroups', 'UserController@index' )->name('viewgroups');
+Route::get('/viewgroups/schedule', 'ScheduleController@index' );
+Route::post('/viewgroups/date', 'ScheduleController@date');
+Route::get('/viewgroups/time', function(){return view('pages.time');
+});
+Route::get('/viewgroups/{start}', 'ScheduleController@schedule' );
+
+
 
 Auth::routes();
 

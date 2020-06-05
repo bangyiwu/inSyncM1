@@ -56,10 +56,6 @@ class EventController extends Controller
         $events = Event::all();
         return view('pages.show', ['event' => $event, 'events'=>$events]);
     }
-    public function time($start) {
-        //$overlaps = Event::where('start','=',$start)->first();
-        $events = Event::all();
-        $users = User::all();
-        return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $start]);
-    }
+
+
 }
