@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 30px">
     @if(Auth::guest())
         <a class="navbar-brand" href="{{ url('/') }}">
             {{config('app.name', 'inSync')}}

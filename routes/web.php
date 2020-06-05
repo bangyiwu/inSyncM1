@@ -20,8 +20,8 @@ Route::get('/', 'PagesController@index');
 Route::get('/myevents', 'PagesController@myevents');
 Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
-Route::get('/viewgroups', 'PagesController@viewgroups');
-Route::get('/editgroups', 'PagesController@editgroups');
+Route::get('/viewgroups', 'GroupController@index');
+Route::get('/editgroups', 'GroupController@index');
 
 Auth::routes();
 
@@ -37,3 +37,4 @@ Route::delete('/events-delete', 'EventController@destroy') ->name('routeEventDel
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
