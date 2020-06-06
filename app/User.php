@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(Event::class);
     }
+
+    public function groups(){
+        return $this->belongsToMany(Group::class)->withTimeStamps();
+    }
 }

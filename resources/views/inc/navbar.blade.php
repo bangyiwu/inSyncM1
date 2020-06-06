@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 30px">
     @if(Auth::guest())
         <a class="navbar-brand" href="{{ url('/') }}">
             {{config('app.name', 'inSync')}}
@@ -24,7 +24,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Social</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <a class="dropdown-item" href="/viewgroups">My Groups</a>
-                            <a class="dropdown-item" href="/editgroups">Edit Groups</a>
+                        <a class="dropdown-item" href="{{ route('groups.index') }}">Edit Groups</a>
                         </div>
                     </li>
                 </ul>

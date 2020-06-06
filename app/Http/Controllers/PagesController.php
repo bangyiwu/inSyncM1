@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Group;
 
 class PagesController extends Controller
 {
@@ -25,6 +26,9 @@ class PagesController extends Controller
     }
 
     public function viewgroups() {
-        return view('pages.viewgroups');
+         
+        
+        $groups = Group::all();
+        return view('pages.viewgroups')->with('groups', $groups);
     }
 }

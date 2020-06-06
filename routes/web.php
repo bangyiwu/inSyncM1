@@ -21,6 +21,7 @@ Route::get('/myevents', 'EventController@index');
 Route::get('/myevents/{id}', 'EventController@show');
 Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
+
 Route::get('/editgroups', 'PagesController@editgroups');
 Route::get('/viewgroups', 'UserController@index' )->name('viewgroups');
 Route::get('/viewgroups/schedule', 'ScheduleController@index' );
@@ -30,6 +31,8 @@ Route::get('/viewgroups/time', function(){return view('pages.time');
 Route::get('/viewgroups/{start}', 'ScheduleController@schedule' );
 
 
+Route::get('/viewgroups', 'GroupController@index');
+Route::get('/editgroups', 'GroupController@index');
 
 Auth::routes();
 
@@ -45,3 +48,10 @@ Route::delete('/events-delete', 'EventController@destroy') ->name('routeEventDel
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/editgroups-delete', 'GroupController@destroy')->name('groupDelete');
+Route::get('/editgroups-edit', 'GroupController@edit')->name('groupEdit');
+Route::get('/editgroups-store', 'GroupController@store')->name('groupStore');
+
+
+Route::resource('/editgroups/groups', 'GroupController', ['except' => ['show']]);
