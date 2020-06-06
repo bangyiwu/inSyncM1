@@ -38,3 +38,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/editgroups-delete', 'GroupController@destroy')->name('groupDelete');
+Route::get('/editgroups-edit', 'GroupController@edit')->name('groupEdit');
+Route::get('/editgroups-store', 'GroupController@store')->name('groupStore');
+
+
+Route::resource('/editgroups/groups', 'GroupController', ['except' => ['show']]);

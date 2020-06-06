@@ -23,8 +23,8 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Social</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item" href="/viewgroups">My Groups</a>
-                            <a class="dropdown-item" href="/editgroups">Edit Groups</a>
+                            <!--<a class="dropdown-item" href="/viewgroups">My Groups</a>-->
+                        <a class="dropdown-item" href="{{ route('groups.index') }}">Edit Groups</a>
                         </div>
                     </li>
                 </ul>

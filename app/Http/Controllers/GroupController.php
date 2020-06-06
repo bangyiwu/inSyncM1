@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Group;
+use App\User;
 
 class GroupController extends Controller
 {
@@ -26,7 +27,7 @@ class GroupController extends Controller
     public function index()
     {
         $groups = Group::all();
-        return view('pages.editgroups')->with('groups' ,$groups);
+        return view('groups.index')->with('groups' ,$groups);
     }
 
     /**
@@ -47,7 +48,11 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Group::create([
+            'name' => request('name'),
+        ]);
+
+        return redirect()->route('groups.index')->with('message', 'Group Created!');
     }
 
     /**
@@ -69,7 +74,12 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        $group = Group::where('id', $id)->first();
+        $users = User::all();
+        return view('groups.edit')->with([
+            'users' => $users,
+            'group' => $group
+            ]);
     }
 
     /**
@@ -81,7 +91,9 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $group = Group::where('id', $id)->first();
+        $group->users()->sync($request->users);
+        return redirect()->route('groups.index');
     }
 
     /**
@@ -92,6 +104,10 @@ class GroupController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $group = Group::where('id', $id)->first();
+        $group->users()->detach();
+        $group->delete();
+
+        return redirect()->route('groups.index');
     }
 }
