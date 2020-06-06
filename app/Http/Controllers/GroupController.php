@@ -30,6 +30,14 @@ class GroupController extends Controller
         return view('groups.index')->with('groups' ,$groups);
     }
 
+    public function mygroups()
+    {
+        $groups = Group::all();
+        $users = User::all();
+        $data = [$users, $groups];
+        return view('pages.viewgroups', ['groups'=>$groups, 'users'=>$users]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

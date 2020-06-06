@@ -23,7 +23,7 @@ Route::get('/addevent', 'PagesController@addevent');
 #Route::get('/dashboard', 'PagesController@dashboard');
 
 Route::get('/editgroups', 'PagesController@editgroups');
-Route::get('/viewgroups', 'UserController@index' )->name('viewgroups');
+Route::get('/viewgroups', 'GroupController@mygroups' )->name('viewgroups');
 Route::get('/viewgroups/schedule', 'ScheduleController@index' );
 Route::post('/viewgroups/date', 'ScheduleController@date');
 Route::get('/viewgroups/time', function(){return view('pages.time');
@@ -31,7 +31,6 @@ Route::get('/viewgroups/time', function(){return view('pages.time');
 Route::get('/viewgroups/{start}', 'ScheduleController@schedule' );
 
 
-Route::get('/viewgroups', 'GroupController@index');
 Route::get('/editgroups', 'GroupController@index');
 
 Auth::routes();
