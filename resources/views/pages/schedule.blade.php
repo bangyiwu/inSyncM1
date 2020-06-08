@@ -4,7 +4,7 @@
 
 <form action="/viewgroups/date" method="post">
     @csrf
-    <input type="text" name="datetime" />
+    <input type="datetime-local" name="datetime" />
     <input type="submit">
 </form>
 
