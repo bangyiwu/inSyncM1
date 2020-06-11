@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,5 +53,7 @@ Route::get('/editgroups-delete', 'GroupController@destroy')->name('groupDelete')
 Route::get('/editgroups-edit', 'GroupController@edit')->name('groupEdit');
 Route::get('/editgroups-store', 'GroupController@store')->name('groupStore');
 
-
+Route::get('editgroups/groups/{id}/members', 'GroupController@members')->name('groupMembers');
 Route::resource('/editgroups/groups', 'GroupController', ['except' => ['show']]);
+
+Route::get('/editgroups/groups/{id}/members/{userID}', 'GroupController@removeMember')->name('remove.member');

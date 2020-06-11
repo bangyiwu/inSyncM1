@@ -17,20 +17,25 @@
                     </tr>
                 </thead>
                 <tbody> 
+                    @php ($row = 0)
+                    @php ($userID = $user->id)
                     @foreach ($groups as $group)
-                    <tr>
-                        <th scope="row">{{$group->id}}</th>
-                        <td>{{ $group->name }}</td>
-                        <td>{{ $group->users()->count() }}</td>
-                        <td>
-                            <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
-                            <form action="{{ route('groups.destroy', $group->id) }}" method="POST" class="float-left">
-                                @csrf
-                                {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-warning">Delete</button></a>
-                            </form>
-                        </td>
-                    </tr>
+                        @if ($group->users()->find($userID))
+                            @php ($row = $row + 1)
+                            <tr>
+                                <th scope="row">{{$row}}</th>
+                                <td>{{ $group->name }}</td>
+                            <td><u><a href="{{ url("/editgroups/groups/{$group->id}/members") }}">{{ $group->users()->count() }}</a><u></td>
+                                <td>
+                                    <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
+                                    <form action="{{ route('groups.destroy', $group->id) }}" method="POST" class="float-left">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-warning">Delete</button></a>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 </tbody>
                 </table>

@@ -26,16 +26,17 @@ class GroupController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
         $groups = Group::all();
-        return view('groups.index')->with('groups' ,$groups);
+        return view('groups.index')->with(compact('user', 'groups'));
     }
 
     public function mygroups()
     {
-        $groups = Group::all();
-        $users = User::all();
-        $data = [$users, $groups];
-        return view('pages.viewgroups', ['groups'=>$groups, 'users'=>$users]);
+        $thisUser = auth()->user();
+        $groups = $thisUser->groups()->paginate(5);
+        $data = [$groups, $thisUser];
+        return view('pages.viewgroups', ['groups'=>$groups, 'thisUser'=>$thisUser]);
     }
 
     /**
@@ -56,9 +57,15 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        Group::create([
+        $user = auth()->user();
+
+        $newGroup = new Group;
+        $newGroup = Group::create([
             'name' => request('name'),
         ]);
+        $newGroup->save();
+
+        $newGroup->users()->sync($user);
 
         return redirect()->route('groups.index')->with('message', 'Group Created!');
     }
@@ -118,4 +125,27 @@ class GroupController extends Controller
 
         return redirect()->route('groups.index');
     }
+
+    public function members($id)
+    {
+        $currentUser = auth()->user()->id;
+        
+        $group = Group::where('id', $id)->first();
+
+        $groupName = $group->name;
+        
+        $users = $group->users()->paginate(3);
+        //dd($users);
+        return view('groups.members')->with('users', $users)->with('groupID', $id)->with('currentUser', $currentUser)->with('groupName', $groupName);
+    }
+
+    // pass in id of user to be removed
+    public function removeMember($id, $userID)
+    {
+        $group = Group::where('id', $id)->first();
+        $group->users()->detach([$userID]);
+
+        return redirect()->route('groupMembers', $id);
+    }
+
 }
