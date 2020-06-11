@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalCalendar" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
+<div class="modal fade" id="modalFastEvent" tabindex="-1" role="dialog" aria-labelledby="titleModal" aria-hidden="true">
     <div class="modal-dialog" role = "document">
       <div class="modal-content">
         <div class="modal-header">
@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body">
           <div class="message"></div>
-            <form id="formEvent">
+            <form id="formFastEvent">
                 <div class="form-group row">
                   <label for="title" class="col-sm-4 col-form-label">Title</label>
                   <div class="col-sm-8">
@@ -20,13 +20,13 @@
                 <div class="form-group row">
                     <label for="start" class="col-sm-4 col-form-label">Start time</label>
                     <div class="col-sm-8">
-                      <input type="text" name="start" class="form-control date-times"  id="start">
+                      <input type="text" name="start" class="form-control time"  id="start">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="end" class="col-sm-4 col-form-label">End time</label>
                     <div class="col-sm-8">
-                      <input type="text" name="end" class="form-control date-times" id="end">
+                      <input type="text" name="end" class="form-control time" id="end">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -51,8 +51,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger deleteEvent">Delete</button>
-          <button type="button" class="btn btn-primary saveEvent">Save</button>
+          <button type="button" class="btn btn-primary saveFastEvent">Save</button>
         </div>
       </div>
     </div>

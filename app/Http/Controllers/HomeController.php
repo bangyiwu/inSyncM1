@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FastEvent;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('fullcalendar.master');
+        $fastEvents = FastEvent::all();
+        return view('fullcalendar.master')->with('fastEvents', $fastEvents);
     }
 }

@@ -16,23 +16,28 @@
 <body>
 @include('inc.navbar')
 @include('fullcalendar.modal-calendar')
+@include('fullcalendar.modal-fastEvents')
 
   <div id='wrap'>
 
     <div id='external-events'>
-      <h4>Draggable Events</h4>
+      <h4>Fast Events</h4>
 
       <div id='external-events-list'>
-        <div class='fc-event'>My Event 1</div>
-        <div class='fc-event'>My Event 2</div>
-        <div class='fc-event'>My Event 3</div>
-        <div class='fc-event'>My Event 4</div>
-        <div class='fc-event'>My Event 5</div>
+         @if($fastEvents )
+            @foreach($fastEvents as $fastEvent)
+            <div 
+            style="padding: 4px; border: 1px solid {{$fastEvent->color}}; background-color:{{$fastEvent->color}};"
+            class='fc-event' 
+            data-event='{"id":"{{$fastEvent->id}}", "title":"{{$fastEvent->title}}", "color" : "{{$fastEvent->color}}", "start":"{{$fastEvent->start}}", "end":"{{$fastEvent->end}}", "description":"{{$fastEvent->description}}", "location":"{{$fastEvent->location}}"}'>{{$fastEvent->title}}</div>
+            @endforeach
+        @endif
       </div>
 
       <p>
         <input type='checkbox' id='drop-remove' />
         <label for='drop-remove'>remove after drop</label>
+        <button class="btn btn-sm btn-success" id = "newFastEvent">Create fast event</button>
       </p>
     </div>
 
@@ -42,6 +47,11 @@
       data-route-event-update="{{route('routeEventUpdate')}}"
       data-route-event-store="{{route('routeEventStore')}}"
       data-route-event-delete="{{route('routeEventDelete')}}"
+
+      data-route-fast-event-delete="{{route('routeFastEventDelete')}}"
+      data-route-fast-event-update="{{route('routeFastEventUpdate')}}"
+      data-route-fast-event-store="{{route('routeFastEventStore')}}"
+
       ></div>
 
     <div style='clear:both'></div>

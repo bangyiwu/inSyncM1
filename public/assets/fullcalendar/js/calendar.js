@@ -26,18 +26,34 @@ document.addEventListener('DOMContentLoaded', function() {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
-      
       navLinks: true,
       eventLimit:true,
       selectable:true,
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
-      drop: function(arg) {
+      drop: function(element) {
+
+        let Event = JSON.parse(element.draggedEl.dataset.event);
         // is the "remove after drop" checkbox checked?
         if (document.getElementById('drop-remove').checked) {
           // if so, remove the element from the "Draggable Events" list
-          arg.draggedEl.parentNode.removeChild(arg.draggedEl);
+          element.draggedEl.parentNode.removeChild(element.draggedEl);
+
+          Event._method = "DELETE";
+          sendEvent(routeEvents('routeFastEventDelete'), Event)
         }
+        
+        let start = moment(`${element.dateStr} ${Event.start}`).format("YYYY-MM-DD HH:mm:ss");
+        let end = moment(`${element.dateStr} ${Event.end}`).format("YYYY-MM-DD HH:mm:ss");
+
+        Event.start = start;
+        Event.end = end;
+        Event.user_id = 1;
+
+        delete Event.id;
+        delete Event._method;
+        sendEvent(routeEvents('routeEventStore'), Event);
+        console.log(Event);
       },
       eventDrop: function(element){
         let start = moment(element.event.start).format("YYYY-MM-DD HH:mm:ss");
@@ -45,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let newEvent = {
           _method:'PUT',
+          title:element.event.title,
           id: element.event.id,
           start : start,
           end: end
@@ -54,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       },
       eventClick: function(element){
-        clearMessages('#message');
+        clearMessages('.message');
         resetForm("#formEvent");
         $("#modalCalendar").modal('show');
         $("#modalCalendar #titleModal").text('Modify Event');
@@ -88,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let newEvent = {
           _method:'PUT',
+          title:element.event.title,
           id: element.event.id,
           start : start,
           end: end
@@ -96,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sendEvent(routeEvents('routeEventUpdate'), newEvent)
       },
       select: function(element){
-        clearMessages('#message');
+        clearMessages('.message');
         resetForm("#formEvent");
         $("#modalCalendar").modal('show');
         $("#modalCalendar #titleModal").text('Add Event');
