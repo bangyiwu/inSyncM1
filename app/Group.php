@@ -9,6 +9,6 @@ class Group extends Model
     protected $fillable = ['name'];
     
     public function users() {
-        return $this->belongsToMany(User::class)->withTimeStamps();
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 }

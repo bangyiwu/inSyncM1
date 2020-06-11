@@ -26,6 +26,7 @@
         
             </tbody>
           </table>
+          {{ $groups->links() }}
     </div> 
     </div>    
 
