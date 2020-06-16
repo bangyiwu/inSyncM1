@@ -3,17 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\GroupEvent;
 use App\User;
+use App\Group;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
     public function loadEvents(){
-        $events = Event::all();
-        $userevents = $events->filter(function($item){
-            return $item->user_id == auth()->user()->id;
-        })->values();
+        // $events = Event::all();
+        // $userevents = $events->filter(function($item){
+        //     return $item->user_id == auth()->user()->id;
+        // })->values();
+        $thisUser = auth()->user();
+        $userevents = Event::where('user_id', auth()->user()->id)->get();
+        $groupevents = GroupEvent::all();
+        $groups = $thisUser->groups()->paginate(5);
+        foreach($groups as $group){
+            $groupevents = $group->groupevents()->paginate(5);
+                foreach($groupevents as $groupevent){
+                    $userevents[] = $groupevent;
+                }}
         return response()->json($userevents);
     }
 
@@ -52,8 +63,11 @@ class EventController extends Controller
     }
     public function show($id) {
         $id = intval($id);
+        $thisUser = auth()->user();
         $event = Event::findOrFail($id);
         $events = Event::all();
+       
+
         return view('pages.show', ['event' => $event, 'events'=>$events]);
     }
 

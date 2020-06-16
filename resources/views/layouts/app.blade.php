@@ -23,7 +23,7 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-
+        @include('fullcalendar.modal-fastEvents')
         <div class="container">
             @yield('content')
         </div>

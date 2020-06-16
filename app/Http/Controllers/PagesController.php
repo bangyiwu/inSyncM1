@@ -26,8 +26,6 @@ class PagesController extends Controller
     }
 
     public function viewgroups() {
-         
-        
         $groups = Group::all();
         return view('pages.viewgroups')->with('groups', $groups);
     }

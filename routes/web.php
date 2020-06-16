@@ -25,11 +25,12 @@ Route::get('/addevent', 'PagesController@addevent');
 
 Route::get('/editgroups', 'PagesController@editgroups');
 Route::get('/viewgroups', 'GroupController@mygroups' )->name('viewgroups');
-Route::get('/viewgroups/schedule', 'ScheduleController@index' );
+Route::get('/viewgroups/schedule/{group_id}', 'ScheduleController@index' );
+Route::get('/viewgroups/events/{group_id}', 'ScheduleController@show' );
 Route::post('/viewgroups/date', 'ScheduleController@date');
+Route::get('/groupevents/{id}', 'GroupEventController@show');
 Route::get('/viewgroups/time', function(){return view('pages.time');
 });
-Route::get('/viewgroups/{start}', 'ScheduleController@schedule' );
 
 
 Route::get('/editgroups', 'GroupController@index');
@@ -60,3 +61,7 @@ Route::get('editgroups/groups/{id}/members', 'GroupController@members')->name('g
 Route::resource('/editgroups/groups', 'GroupController', ['except' => ['show']]);
 
 Route::get('/editgroups/groups/{id}/members/{userID}', 'GroupController@removeMember')->name('remove.member');
+
+Route::post('/group-events-store', 'GroupEventController@store') ->name('routeGroupEventStore');
+Route::put('/group-events-update', 'GroupEventController@update') ->name('routeGroupEventUpdate');
+Route::delete('groupevents/delete/{id}', ['as' => 'groupEvent.delete', 'uses' => 'GroupEventController@destroy']);

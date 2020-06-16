@@ -16,7 +16,7 @@
         <tbody>
             @php ($row = 0)
             @foreach ($events as $event)
-                @if($event-> user_id == auth()->user()->id)
+                @if($event->user_id == auth()->user()->id)
                     @php ($row = $row + 1)
                     @php ($conflict = false)
                     <tr>

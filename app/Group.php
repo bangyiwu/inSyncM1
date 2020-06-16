@@ -11,4 +11,9 @@ class Group extends Model
     public function users() {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    public function groupevents()
+    {
+        return $this->hasMany('App\GroupEvent', 'group_id', 'id');
+    }
 }

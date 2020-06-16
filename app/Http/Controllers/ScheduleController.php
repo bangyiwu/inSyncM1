@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\GroupEvent;
 use App\User;
+use App\Group;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -15,13 +17,14 @@ class ScheduleController extends Controller
        $startedAt= Carbon::createFromFormat('Y-m-d\TH:i', $start);
        $events = Event::all();
        $users = User::all();
+       $group_id = $request->group_id;
        $data = ['events' => $events, 'users' => $users, 'start' => $startedAt];
     //    return redirect('viewgroups/time') -> with($data);
-       return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $startedAt]);
+       return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $startedAt, 'group_id' => $group_id]);
     }
 
-    public function index() {
-        return view('pages.schedule');
+    public function index($group_id) {
+        return view('pages.schedule', ['group_id' => $group_id]);
     }
 
     public function time() {
@@ -30,5 +33,10 @@ class ScheduleController extends Controller
         // $users = User::all();
         // return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $start]);
         // return view('pages.time');
+    }
+    public function show($group_id) {
+        $group = Group::find($group_id);
+        $groupevents = $group->groupevents()->paginate(5);
+        return view('pages.groupevents', ['group_id' => $group_id, 'groupevents' => $groupevents, 'group' => $group]);
     }
 }
