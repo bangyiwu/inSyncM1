@@ -70,6 +70,12 @@ class GroupController extends Controller
         return redirect()->route('groups.index')->with('message', 'Group Created!');
     }
 
+    public function editGroupName(Request $request, $groupID) {
+        $group = Group::where('id', $groupID)->first();
+        dd($group);
+        return view('groups.index');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -107,8 +113,17 @@ class GroupController extends Controller
     public function update(Request $request, $id)
     {
         $group = Group::where('id', $id)->first();
-        $group->users()->sync($request->users);
+        $groupUsers = $group->users()->all();
+        $group->users()->sync($groupUsers, $request->user);
         return redirect()->route('groups.index');
+    }
+
+    public function addMember($groupID, $userID)
+    {
+        $group = Group::where('id', $groupID)->first();
+        $group->users()->syncWithoutDetaching([$userID]);
+        $users = User::where('id', $userID)->get();
+        return view('groups.addmembers')->with('group', $group)->with('users', $users);
     }
 
     /**
@@ -146,6 +161,13 @@ class GroupController extends Controller
         $group->users()->detach([$userID]);
 
         return redirect()->route('groupMembers', $id);
+    }
+
+    public function searchForGroup($groupID) {
+        $search_text = $_GET['query'];
+        $users = User::where('name', 'LIKE', '%'.$search_text.'%')->get();
+        $group = Group::where('id', $groupID)->first();
+        return view('groups.addmembers', compact('users', 'group'));
     }
 
 }
