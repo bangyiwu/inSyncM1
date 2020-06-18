@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Group;
 use App\User;
+use App\Leader;
 
 class GroupController extends Controller
 {
@@ -67,7 +68,40 @@ class GroupController extends Controller
 
         $newGroup->users()->sync($user);
 
+        $leader = Leader::create([
+            'name' => ($user->name),
+            'user_id' => ($user->id)
+        ]);
+        if(Leader::where('name', '=', $user->name)->count() <= 0){
+            $leader->save();
+        }
+        $newGroup->leaders()->syncWithoutDetaching($user->id);
+
         return redirect()->route('groups.index')->with('message', 'Group Created!');
+    }
+
+    public function makeAdmin($groupID, $userID)
+    {
+        $currentUser = auth()->user()->id;
+        
+        $group = Group::where('id', $groupID)->first();
+
+        $users = $group->users()->paginate(10);
+        $group->leaders()->syncWithoutDetaching($userID);
+
+        return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
+    }
+
+    public function revokeAdmin($groupID, $userID)
+    {
+        $currentUser = auth()->user()->id;
+        
+        $group = Group::where('id', $groupID)->first();
+
+        $users = $group->users()->paginate(10);
+        $group->leaders()->detach([$userID]);
+
+        return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
     }
 
     public function editGroupName(Request $request, $groupID) {
@@ -151,7 +185,7 @@ class GroupController extends Controller
         
         $users = $group->users()->paginate(3);
         //dd($users);
-        return view('groups.members')->with('users', $users)->with('groupID', $id)->with('currentUser', $currentUser)->with('groupName', $groupName);
+        return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
     }
 
     // pass in id of user to be removed

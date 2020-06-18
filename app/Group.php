@@ -16,4 +16,8 @@ class Group extends Model
     {
         return $this->hasMany('App\GroupEvent', 'group_id', 'id');
     }
+
+    public function leaders(){
+        return $this->belongsToMany(Leader::class)->withTimestamps();
+    }
 }

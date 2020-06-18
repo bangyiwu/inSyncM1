@@ -12,6 +12,7 @@
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Group Name</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Members</th>
                     <th scope="col">Actions</th>
                     </tr>
@@ -25,6 +26,11 @@
                             <tr>
                                 <th scope="row">{{$row}}</th>
                                 <td>{{ $group->name }}</td>
+                                <td>
+                                    @if ($group->leaders()->find($userID))
+                                        admin
+                                    @endif
+                                </td>
                             <td><u><a href="{{ url("/editgroups/groups/{$group->id}/members") }}">{{ $group->users()->count() }}</a><u></td>
                                 <td>
                                     <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
