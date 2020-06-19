@@ -44,4 +44,9 @@ class User extends Authenticatable
     public function groups(){
         return $this->belongsToMany(Group::class)->withTimestamps();
     }
+
+    public function fastevents()
+    {
+        return $this->hasMany('App\FastEvent', 'user_id', 'id');
+    }
 }

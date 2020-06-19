@@ -56,9 +56,20 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = Event::all();
+        $thisUser = auth()->user();
+        $userevents = Event::where('user_id', auth()->user()->id)->get();
+        $groups = $thisUser->groups()->paginate(99);
+        foreach($groups as $group){
+            $gees = $group->groupevents()->paginate(99);
+            foreach($gees as $gee){
+                $userevents[] = $gee;
+            }
+        }
+        $sortedEvents = collect($userevents)->sortBy('start')->values();
+        $number = $sortedEvents->count();
         return view('pages.myevents', [
-            'events' => $events,
+            'events' => $sortedEvents,
+            'count' => $number,
             ]);
     }
     public function show($id) {
