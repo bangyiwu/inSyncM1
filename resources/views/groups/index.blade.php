@@ -34,11 +34,30 @@
                             <td><u><a href="{{ url("/editgroups/groups/{$group->id}/members") }}">{{ $group->users()->count() }}</a><u></td>
                                 <td>
                                     <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
-                                    <form action="{{ route('groups.destroy', $group->id) }}" method="POST" class="float-left">
-                                        @csrf
-                                        {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-warning">Delete</button></a>
-                                    </form>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" style="margin-left:5px" data-toggle="modal" data-target="#exampleModal">
+                                        Leave
+                                    </button>            
+                                    <!-- Start Add Modal -->
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Are you sure about leaving {{ $group->name }}?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <a href="{{ url("/leavegroup/{$group->id}") }}" class="float-left">
+                                                    <button type="submit" class="btn btn-primary">Confirm</button></a>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Add Modal -->
                                 </td>
                             </tr>
                         @endif

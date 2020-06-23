@@ -172,7 +172,16 @@ class GroupController extends Controller
         $group->users()->detach();
         $group->delete();
 
-        return redirect()->route('groups.index');
+        return redirect()->route('groups.index')->with('message', "'$group->name' deleted");
+    }
+
+    public function leaveGroup($id)
+    {
+        $currentUser = auth()->user();
+        $group = Group::where('id', $id)->first();
+        $group->users()->detach($currentUser);
+
+        return redirect()->route('groups.index')->with('message', "Left '$group->name'");
     }
 
     public function members($id)

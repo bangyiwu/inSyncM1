@@ -72,3 +72,5 @@ Route::get('/searchforgroup/{groupID}', 'GroupController@searchForGroup');
 Route::get('editgroups/groups/addmember/{groupID}/{userID}', 'GroupController@addMember')->name('groups.addMember');
 Route::get('/makeadmin/{groupID}/{userID}', 'GroupController@makeAdmin')->name('groups.makeAdmin');
 Route::get('/revokeadmin/{groupID}/{userID}', 'GroupController@revokeAdmin')->name('groups.revokeAdmin');
+
+Route::get('/leavegroup/{groupID}', 'GroupController@leaveGroup')->name('groups.leave');
