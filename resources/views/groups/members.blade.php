@@ -58,7 +58,7 @@
         
             </tbody>
           </table>
-          {{ $users->links() }}
+          {{-- {{ $users->links() }} --}}
     </div> 
     </div>  
     
@@ -117,7 +117,7 @@
             
                 </tbody>
               </table>
-              {{ $users->links() }}
+              {{-- {{ $users->links() }} --}}
         </div> 
         </div>
 

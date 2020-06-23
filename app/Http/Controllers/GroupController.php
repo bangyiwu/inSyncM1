@@ -183,7 +183,7 @@ class GroupController extends Controller
 
         $groupName = $group->name;
         
-        $users = $group->users()->paginate(3);
+        $users = $group->users()->get();
         //dd($users);
         return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
     }
