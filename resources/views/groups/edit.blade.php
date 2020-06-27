@@ -14,6 +14,7 @@
                     <button type="submit" class="btn btn-primary">Update</button>    
                 </form>
             </div>
+    </div>
 
     <div class="card" style="margin-bottom: 30px">
         <div class="card-header">Add members to {{ $group->name }}</div>
@@ -150,12 +151,12 @@
 
         <div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#deleteGroup">
                 Delete Group
             </button>
         
                 <!-- Start Add Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="deleteGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
