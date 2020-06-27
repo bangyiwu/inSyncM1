@@ -2,8 +2,8 @@
 
 @section('content')
 
-<h3>Events you have with this group: </h3>
-
+<h1>Events with {{$group->name}}: </h1>
+@if($groupevents->count() > 0)
 <table class="table">
     <thead>
       <tr>
@@ -27,5 +27,10 @@
       @endforeach
     </tbody>
   </table>
+  @else
+      <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+        <p>You currently have no events with this group</p>
+      </div>
+  @endif    
   
 @endsection

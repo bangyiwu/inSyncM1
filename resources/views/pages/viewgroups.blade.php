@@ -1,8 +1,9 @@
 
 @extends('layouts.app')
 
-@section('content')
 
+@section('content')
+@if ($count > 0)
     <div class="card">
     <div class="card-body">  
         <table class="table">
@@ -35,6 +36,11 @@
               </div>
           @endif
     </div> 
-    </div>    
+    </div>  
+    @else
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+        <p>You are currently not in any groups</p>
+    </div>
+@endif    
 
 @endsection

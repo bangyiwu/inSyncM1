@@ -1,7 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="">    
     <h1>My Events</h1>
+  </div>
+
+    @if($count > 0)
     <p>These are my events</p>
     <table class="table">
         <thead>
@@ -16,7 +20,6 @@
         <tbody>
             @php ($row = 0)
             @foreach ($events as $event)
-                @if($event->user_id == auth()->user()->id)
                     @php ($row = $row + 1)
                     @php ($conflict = false)
                     <tr>
@@ -35,8 +38,12 @@
                         <td>FALSE</td>
                         @endif
                     </tr>
-                @endif    
           @endforeach
         </tbody>
       </table>
+      @else
+      <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
+        <p>You currently have no events</p>
+      </div>
+      @endif    
 @endsection

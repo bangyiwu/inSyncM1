@@ -20,7 +20,8 @@ class FullCalendarController extends Controller
 
     
     public function index(){
-        $fastEvents = FastEvent::all();
+        $thisUser = auth()->user();
+        $fastEvents = $thisUser->fastevents()->paginate(99);
         return view('fullcalendar.master')->with('fastEvents', $fastEvents);
     }
 }

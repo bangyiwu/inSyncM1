@@ -14,7 +14,15 @@ class FastEventController extends Controller
     }
 
     public function store(Request $request){
-        FastEvent::create($request->all());
+        FastEvent::create([
+            'title' => request('title'),
+            'start' => request('start'),
+            'end' => request('end'),
+            'color' => request('color'),
+            'description' => request('description'),
+            'user_id' => auth()->user()->id,
+            'location' => request('location'),
+        ]);
         return response()->json(true);
     }
 

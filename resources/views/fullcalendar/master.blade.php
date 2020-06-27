@@ -24,7 +24,7 @@
       <h4>Fast Events</h4>
 
       <div id='external-events-list'>
-         @if($fastEvents )
+         @if($fastEvents)
             @foreach($fastEvents as $fastEvent)
             <div 
             style="padding: 4px; border: 1px solid {{$fastEvent->color}}; background-color:{{$fastEvent->color}};"

@@ -19,7 +19,6 @@ class ScheduleController extends Controller
        $users = User::all();
        $group_id = $request->group_id;
        $data = ['events' => $events, 'users' => $users, 'start' => $startedAt];
-    //    return redirect('viewgroups/time') -> with($data);
        return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $startedAt, 'group_id' => $group_id]);
     }
 
