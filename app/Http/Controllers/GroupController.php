@@ -79,7 +79,7 @@ class GroupController extends Controller
         }
         $newGroup->leaders()->syncWithoutDetaching($user->id);
 
-        return redirect()->route('groups.index')->with('message', 'Group Created!');
+        return redirect()->route('groups.index')->with('message', "Group '$newGroup->name' Created!");
     }
 
     public function makeAdmin($groupID, $userID)
@@ -91,7 +91,12 @@ class GroupController extends Controller
         $users = $group->users()->paginate(10);
         $group->leaders()->syncWithoutDetaching($userID);
 
-        return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
+        return view('groups.edit')->with([
+            'users' => $users,
+            'group' => $group,
+            'currentUser' => $currentUser
+            ]);
+        //return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
     }
 
     public function revokeAdmin($groupID, $userID)
@@ -103,13 +108,21 @@ class GroupController extends Controller
         $users = $group->users()->paginate(10);
         $group->leaders()->detach([$userID]);
 
-        return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
+        return view('groups.edit')->with([
+            'users' => $users,
+            'group' => $group,
+            'currentUser' => $currentUser
+            ]);
+        //return view('groups.members')->with('group', $group)->with('users', $users)->with('currentUser', $currentUser);
     }
 
     public function editGroupName(Request $request, $groupID) {
         $group = Group::where('id', $groupID)->first();
-        dd($group);
-        return view('groups.index');
+        $oldName = $group->name;
+        $name = request('name');
+        //dd($group);
+        $group->update(array('name' => $name));
+        return redirect()->route('groups.index')->with('message', "Group '$oldName' changed to '$name'!");
     }
 
     /**
@@ -131,11 +144,13 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
+        $currentUser = auth()->user()->id;
         $group = Group::where('id', $id)->first();
         $users = User::all();
         return view('groups.edit')->with([
             'users' => $users,
-            'group' => $group
+            'group' => $group,
+            'currentUser' => $currentUser
             ]);
     }
 
@@ -156,10 +171,12 @@ class GroupController extends Controller
 
     public function addMember($groupID, $userID)
     {
+        $currentUser = auth()->user()->id;
         $group = Group::where('id', $groupID)->first();
         $group->users()->syncWithoutDetaching([$userID]);
-        $users = User::where('id', $userID)->get();
-        return view('groups.addmembers')->with('group', $group)->with('users', $users);
+        $searchedUsers = User::where('id', $userID)->get();
+        $users = $group->users()->get();
+        return view('groups.addmembers')->with('group', $group)->with('users', $users)->with('searchedUsers', $searchedUsers)->with('currentUser', $currentUser);
     }
 
     /**
@@ -174,7 +191,16 @@ class GroupController extends Controller
         $group->users()->detach();
         $group->delete();
 
-        return redirect()->route('groups.index');
+        return redirect()->route('groups.index')->with('message', "'$group->name' deleted");
+    }
+
+    public function leaveGroup($id)
+    {
+        $currentUser = auth()->user();
+        $group = Group::where('id', $id)->first();
+        $group->users()->detach($currentUser);
+
+        return redirect()->route('groups.index')->with('message', "Left '$group->name'");
     }
 
     public function members($id)
@@ -200,10 +226,13 @@ class GroupController extends Controller
     }
 
     public function searchForGroup($groupID) {
+        $currentUser = auth()->user()->id;
+        
         $search_text = $_GET['query'];
-        $users = User::where('name', 'LIKE', '%'.$search_text.'%')->get();
+        $searchedUsers = User::where('name', 'LIKE', '%'.$search_text.'%')->get();
         $group = Group::where('id', $groupID)->first();
-        return view('groups.addmembers', compact('users', 'group'));
+        $users = $group->users()->get();
+        return view('groups.addmembers', compact('users', 'group', 'currentUser', 'searchedUsers'));
     }
 
 }
