@@ -29,7 +29,8 @@ class GroupController extends Controller
     {
         $user = auth()->user();
         $groups = Group::all();
-        return view('groups.index')->with(compact('user', 'groups'));
+        $count = $user->groups()->paginate(99)->count();
+        return view('groups.index')->with(compact('user', 'groups', 'count'));
     }
 
     public function mygroups()
@@ -37,7 +38,8 @@ class GroupController extends Controller
         $thisUser = auth()->user();
         $groups = $thisUser->groups()->paginate(5);
         $data = [$groups, $thisUser];
-        return view('pages.viewgroups', ['groups'=>$groups, 'thisUser'=>$thisUser]);
+        $count = $thisUser->groups()->paginate(99)->count();
+        return view('pages.viewgroups', ['groups'=>$groups, 'thisUser'=>$thisUser, 'count'=>$count]);
     }
 
     /**

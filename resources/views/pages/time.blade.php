@@ -123,6 +123,6 @@
                 </div>
             </div>
             <!-- End Add Modal -->
-        
+            <a href="/viewgroups/schedule/{{$group_id}}" class="btn btn-success" role="button">Try another time</a>
 
 @endsection
