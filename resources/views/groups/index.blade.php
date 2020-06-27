@@ -82,6 +82,7 @@
                         <div class="form-group">
                             <label for="name">Group Name</label>
                             <input type="text" name="name" class="form-control" id="name" placeholder="input your group name">
+@if ($count > 0)
 <div class="container">    
     <div class="card">
         <div class="card-header">My Groups</div>
