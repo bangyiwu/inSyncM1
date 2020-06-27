@@ -57,7 +57,7 @@ Route::get('/editgroups-delete', 'GroupController@destroy')->name('groupDelete')
 Route::get('/editgroups-edit', 'GroupController@edit')->name('groupEdit');
 Route::get('/editgroups-store', 'GroupController@store')->name('groupStore');
 
-Route::get('/editgroupname/{groupID}', 'GroupController@editGroupName')->name('group.editName');
+Route::put('/editgroupname/{groupID}', 'GroupController@editGroupName')->name('group.editName');
 
 Route::get('editgroups/groups/{id}/members', 'GroupController@members')->name('groupMembers');
 Route::resource('/editgroups/groups', 'GroupController', ['except' => ['show']]);

@@ -33,11 +33,13 @@
                                 </td>
                             <td><u><a href="{{ url("/editgroups/groups/{$group->id}/members") }}">{{ $group->users()->count() }}</a><u></td>
                                 <td>
-                                    <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary float-left">Edit</button></a>
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" style="margin-left:5px" data-toggle="modal" data-target="#exampleModal">
+                                    <button type="button" class="btn btn-danger float-left" style="margin-right:5px" data-toggle="modal" data-target="#exampleModal">
                                         Leave
-                                    </button>            
+                                    </button> 
+                                    @if ($group->leaders()->find($user->id))
+                                    <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                                    @endif           
                                     <!-- Start Add Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -51,7 +53,7 @@
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <a href="{{ url("/leavegroup/{$group->id}") }}" class="float-left">
-                                                    <button type="submit" class="btn btn-primary">Confirm</button></a>
+                                                    <button type="submit" class="btn btn-danger">Confirm</button></a>
                                                     </a>
                                                 </div>
                                             </div>
@@ -75,12 +77,12 @@
     <div class="container" style="margin-top: 30px">
       
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newGroup">
         Create New Group
         </button>
   
         <!-- Start Add Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
