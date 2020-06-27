@@ -29,8 +29,7 @@ class GroupController extends Controller
     {
         $user = auth()->user();
         $groups = Group::all();
-        $count = $user->groups()->paginate(99)->count();
-        return view('groups.index')->with(compact('user', 'groups', 'count'));
+        return view('groups.index')->with(compact('user', 'groups'));
     }
 
     public function mygroups()
@@ -38,8 +37,7 @@ class GroupController extends Controller
         $thisUser = auth()->user();
         $groups = $thisUser->groups()->paginate(5);
         $data = [$groups, $thisUser];
-        $count = $thisUser->groups()->paginate(99)->count();
-        return view('pages.viewgroups', ['groups'=>$groups, 'thisUser'=>$thisUser, 'count'=>$count]);
+        return view('pages.viewgroups', ['groups'=>$groups, 'thisUser'=>$thisUser]);
     }
 
     /**
@@ -146,7 +144,7 @@ class GroupController extends Controller
     {
         $currentUser = auth()->user()->id;
         $group = Group::where('id', $id)->first();
-        $users = User::all();
+        $users = $group->users()->get();
         return view('groups.edit')->with([
             'users' => $users,
             'group' => $group,
@@ -219,10 +217,18 @@ class GroupController extends Controller
     // pass in id of user to be removed
     public function removeMember($id, $userID)
     {
+        $currentUser = auth()->user()->id;
         $group = Group::where('id', $id)->first();
         $group->users()->detach([$userID]);
+        $users = $group->users()->get();
 
-        return redirect()->route('groupMembers', $id);
+        //return redirect()->route('groupMembers', $id);
+
+        return view('groups.edit')->with([
+            'users' => $users,
+            'group' => $group,
+            'currentUser' => $currentUser
+            ]);
     }
 
     public function searchForGroup($groupID) {
