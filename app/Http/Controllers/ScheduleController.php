@@ -13,6 +13,19 @@ use Carbon\Carbon;
 class ScheduleController extends Controller
 {
     public function date(Request $request){
+
+        $rules = [
+            'datetime' => 'required',
+        ];
+    
+        $customMessages = [
+            'datetime.required' => 'The start time can not be blank.'
+        ];
+    
+        $this->validate($request, $rules, $customMessages);
+        // $validatedData = $request->validate([
+        //     'datetime' => 'required',
+        // ]);
        $start = $request->datetime;
        $startedAt= Carbon::createFromFormat('Y-m-d\TH:i', $start);
        $events = Event::all();
@@ -38,4 +51,5 @@ class ScheduleController extends Controller
         $groupevents = $group->groupevents()->paginate(5);
         return view('pages.groupevents', ['group_id' => $group_id, 'groupevents' => $groupevents, 'group' => $group]);
     }
+
 }
