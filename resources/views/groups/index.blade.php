@@ -39,7 +39,7 @@
                                         Leave
                                     </button> 
                                     @if ($group->leaders()->find($user->id))
-                                    <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                                    <a href="{{route('groups.edit', $group->id)}}"><button type="button" class="btn btn-primary">Add/Edit Members</button></a>
                                     @endif           
                                     <!-- Start Add Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
