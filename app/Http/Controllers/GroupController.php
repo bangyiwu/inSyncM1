@@ -198,7 +198,13 @@ class GroupController extends Controller
     {
         $currentUser = auth()->user();
         $group = Group::where('id', $id)->first();
-        $group->users()->detach($currentUser);
+        if($group->users()->count() <= 1) {
+            $group->users()->detach();
+            $group->delete();
+            return redirect()->route('groups.index')->with('message', "Left and Deleted '$group->name'");
+        } else {
+            $group->users()->detach($currentUser);
+        };
 
         return redirect()->route('groups.index')->with('message', "Left '$group->name'");
     }
