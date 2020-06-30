@@ -11,6 +11,7 @@
         <th scope="col">Event</th>
         <th scope="col">Location</th>
         <th scope="col">Start time</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -20,9 +21,10 @@
                 @php ($conflict = false)
                 <tr>
                     <th scope="row">{{$row}}</th>
-                    <td><a href="/groupevents/{{$event->id}}">{{$event->title}}</a></td>
+                    <td>{{$event->title}}</td>
                     <td>{{$event->location}}</td>
                     <td>{{$event->start}}</td>
+                    <td><a href="/groupevents/{{$event->id}}"><button type="button" class="btn btn-primary" >View/Edit Details</button></a></td>
                 </tr>
       @endforeach
     </tbody>

@@ -7,7 +7,7 @@
     <h3>This event clashes with:</h3>
     <p>
          @foreach ($events as $innerevent)
-            @if(($groupEvent->location == $innerevent->location) && ($event->start == $innerevent->start) && ($event->id !== $innerevent->id))
+            @if(($groupEvent->location == $innerevent->location) && ($groupEvent->start == $innerevent->start) && ($groupEvent->id !== $innerevent->id))
             <div class="overlap">
                 {{$innerevent->title}} booked by {{$innerevent->user_id}}
             </div>
@@ -16,11 +16,17 @@
     </p>
 
     <div class="container" style="margin-top: 30px">
-      
+      <div class="row">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#exampleModal">
         Edit Group Event
         </button>
+        <form action="{{route('groupEvent.delete', $groupEvent->id)}}" method='POST'>
+          {{csrf_field()}}
+          {{method_field('DELETE')}}
+          <button type="submit" class = 'btn btn-danger'>Delete</button>
+      </form>
+    </div>
   
         <!-- Start Add Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -79,9 +85,5 @@
             </div>
         </div>
         <!-- End Add Modal -->
-        <form action="{{route('groupEvent.delete', $groupEvent->id)}}" method='POST'>
-            {{csrf_field()}}
-            {{method_field('DELETE')}}
-            <button type="submit" class = 'btn btn-danger'>Delete</button>
-        </form>
+
 @endsection
