@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">    
-    <h1>My Events</h1>
-  </div>
-
+<div class="card">
+  <div class="card-body">  
     @if($count > 0)
-    <p>These are my events</p>
+    <h1>My Events</h1>
     <table class="table">
         <thead>
           <tr>
@@ -45,5 +43,7 @@
       <div class="cover-container d-flex h-100 p-3 mx-auto flex-column text-center">
         <p>You currently have no events</p>
       </div>
-      @endif    
+      @endif  
+    </div>  
+</div>
 @endsection

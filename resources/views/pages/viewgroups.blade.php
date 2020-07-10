@@ -6,6 +6,7 @@
 @if ($count > 0)
     <div class="card">
     <div class="card-body">  
+        <h1>My Groups</h1>
         <table class="table">
             <thead>
               <tr>

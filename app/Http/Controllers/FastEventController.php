@@ -28,7 +28,15 @@ class FastEventController extends Controller
 
     public function update(Request $request){
         $event = FastEvent::where('id', $request->id)->first();
-        $event->fill($request->all());
+        $event->fill([
+            'title' => request('title'),
+            'start' => request('start'),
+            'end' => request('end'),
+            'color' => request('color'),
+            'description' => request('description'),
+            'user_id' => auth()->user()->id,
+            'location' => request('location'),
+        ]);
         $event->save();
         return response()->json(true);
 

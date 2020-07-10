@@ -1,5 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");@charset "UTF-8";
+
 body {
     margin-top: 0px;
+    background-color: #24292e;
+    font-family: 'Lato', sans-serif;
+    color: #f6f7f9;
   }
 
   #wrap {
@@ -8,15 +13,19 @@ body {
   }
 
   #external-events {
+    font-family: 'Lato', sans-serif;
     float: left;
     width: 150px;
     padding: 0 10px;
-    border: 1px solid #ccc;
-    background: #eee;
+    border: 1px solid #cde2d6;
+    background: #383f45;
     text-align: left;
+    border-radius: 10px;
   }
 
   #external-events h4 {
+    font-family: 'Lato', sans-serif;
+    color: #cde2d6;
     font-size: 16px;
     margin-top: 0;
     padding-top: 1em;
@@ -28,9 +37,10 @@ body {
   }
 
   #external-events p {
+    font-family: 'Lato', sans-serif;
     margin: 1.5em 0;
     font-size: 11px;
-    color: #666;
+    color: #cde2d6;
   }
 
   #external-events p input {
@@ -39,6 +49,7 @@ body {
   }
 
   #calendar {
+    font-family: 'Lato', sans-serif;
     float: right;
     width: 900px;
   }
@@ -54,6 +65,10 @@ body {
     width: 50%;
     border: 3px solid green;
     padding: 10px;
+  }
+
+  .black {
+    background-color: #383f45;
   }
 
   
