@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
@@ -72,7 +72,7 @@ body {
   line-height: 1.6;
   color: #ffffff;
   text-align: left;
-  background-color: #121212;
+  background-color: #24292e;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -2719,15 +2719,15 @@ fieldset:disabled a.btn {
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  background-color: #79a9cb;
+  border-color: #7ebeeb;
   box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
 }
 
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: #fff;
-  background-color: #2d87d0;
+  background-color: #79a9cb;
   border-color: #2d87d0;
 }
 
@@ -2735,14 +2735,14 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #2176bd;
+  background-color: #79a9cb;
   border-color: #1f6fb2;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus,
 .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(82, 161, 225, 0.5);
+  box-shadow: 0 0 0 0.2rem #79a9cb;
 }
 
 .btn-secondary {
@@ -2911,14 +2911,14 @@ fieldset:disabled a.btn {
 
 .btn-danger {
   color: #fff;
-  background-color: #e3342f;
-  border-color: #e3342f;
+  background-color: #6a0104;
+  border-color: #6a0104;
 }
 
 .btn-danger:hover {
   color: #fff;
-  background-color: #d0211c;
-  border-color: #c51f1a;
+  background-color: #b14945;
+  border-color: #b14945;
 }
 
 .btn-danger:focus,
