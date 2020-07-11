@@ -4,7 +4,8 @@
 <div class="card">
   <div class="card-body">  
     @if($count > 0)
-    <h1>My Events</h1>
+    <h1 class="underlined">My Events</h1>
+    <h2>Personal Events</h2>
     <table class="table">
         <thead>
           <tr>
@@ -17,7 +18,7 @@
         </thead>
         <tbody>
             @php ($row = 0)
-            @foreach ($events as $event)
+            @foreach ($userEvents as $event)
                     @php ($row = $row + 1)
                     @php ($conflict = false)
                     <tr>
@@ -35,7 +36,48 @@
                             @endif
                         @endforeach
                         @if($conflict == true)
-                        <td>TRUE</td>
+                        <td class="red">TRUE</td>
+                        @else
+                        <td>FALSE</td>
+                        @endif
+                    </tr>
+          @endforeach
+        </tbody>
+      </table>
+    <p class="upperline"></p>
+    <h2>Group Events</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Event</th>
+            <th scope="col">Location</th>
+            <th scope="col">Start time</th>
+            <th scope="col">Conflict</th>
+          </tr>
+        </thead>
+        <tbody>
+            @php ($row = 0)
+            @foreach ($groupEvents as $groupEvent)
+                    @php ($row = $row + 1)
+                    @php ($conflict = false)
+                    <tr>
+                        <th scope="row">{{$row}}</th>
+                        <td><a href="/groupevents/{{$groupEvent->id}}">{{$groupEvent->title}}</a></td>
+                        <td>{{$groupEvent->location}}</td>
+                        <td>{{$groupEvent->start}}</td>
+                        @foreach ($events as $innerevent)
+                          @if(($groupEvent->location == $innerevent->location) && 
+                          (($groupEvent->end < $innerevent->end && $groupEvent->end > $innerevent->start) ||
+                          ($groupEvent->start > $innerevent->start && $groupEvent->start < $innerevent->end)||
+                          ($groupEvent->start <= $innerevent->start && $groupEvent->end >= $innerevent->end)||
+                          ($groupEvent->start == $innerevent->start))
+                          && ($groupEvent->id !== $innerevent->id))
+                                @php ($conflict = true)
+                            @endif
+                        @endforeach
+                        @if($conflict == true)
+                        <td class="red">TRUE</td>
                         @else
                         <td>FALSE</td>
                         @endif

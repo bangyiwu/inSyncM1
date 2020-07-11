@@ -10997,3 +10997,25 @@ a.text-dark:focus {
   border-color: #116466;
 }
 
+.red{
+  color: #b14945;
+}
+
+.underlined {
+  border-bottom: 1px solid black;
+  border-color: #f6f7f9;
+  padding-bottom: 5px;
+}
+
+.underlined-top {
+  border-bottom: 1px solid black;
+  border-color: #f6f7f9;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.upperline {
+  border-top: 1px solid black;
+  border-color: #f6f7f9;
+  padding-bottom: 1px;
+}

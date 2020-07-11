@@ -1,15 +1,27 @@
 @extends('layouts.app')
     
 @section('content')
-    <h2>Details of {{$groupEvent->title}} on {{$groupEvent->start}}</h2>
+<div class="card">
+  <div class="card-body">
+    <h2 class="underlined">Details of {{$groupEvent->title}} on {{$groupEvent->start}}</h2>
     <h3>Description:</h3>
-    <p>{{$groupEvent->description}}</p>
+    <h5 class="underlined-top">{{$groupEvent->description}}</p>
     <h3>This event clashes with:</h3>
     <p>
          @foreach ($events as $innerevent)
-            @if(($groupEvent->location == $innerevent->location) && ($groupEvent->start == $innerevent->start) && ($groupEvent->id !== $innerevent->id))
+         @if(($groupEvent->location == $innerevent->location) && 
+         (($groupEvent->end < $innerevent->end && $groupEvent->end > $innerevent->start) ||
+         ($groupEvent->start > $innerevent->start && $groupEvent->start < $innerevent->end)||
+         ($groupEvent->start <= $innerevent->start && $groupEvent->end >= $innerevent->end)||
+         ($groupEvent->start == $innerevent->start))
+         && ($groupEvent->id !== $innerevent->id))
             <div class="overlap">
-                {{$innerevent->title}} booked by {{$innerevent->user_id}}
+              {{$innerevent->title}} booked by 
+              @foreach ($users as $item)
+                  @if ($innerevent->user_id == $item->id)
+                      {{$item->name}}
+                  @endif
+              @endforeach
             </div>
             @endif
         @endforeach 
@@ -86,4 +98,7 @@
         </div>
         <!-- End Add Modal -->
 
+  </div>
+</div>
+    
 @endsection

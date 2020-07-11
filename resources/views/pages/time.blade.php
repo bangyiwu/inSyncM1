@@ -2,10 +2,11 @@
     
 @section('content')
 
-    <h2> On {{$start}} :</h2>
+    
 
     <div class="card">
         <div class="card-body">  
+          <h1> On {{$start}} :</h1>
             <table class="table">
                 <thead>
                   <tr>
@@ -26,7 +27,8 @@
                             <td>
                                 @foreach ($events as $event)
                                     @if($event->user_id == $user->id)
-                                        @if ($event->start == $start)
+                                        @if (($event->start == $start) ||
+                                        ($event->start < $start && $event->end > $start))
                                         @php ($free = false)
                                         @endif
                                     @endif
