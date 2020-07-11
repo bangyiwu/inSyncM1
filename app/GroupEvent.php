@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GroupEvent extends Model
 {
-    use SoftDeletes; 
+    use SoftDeletes;
     protected $fillable=['title', 'start', 'end', 'color', 'description', 'user_id', 'location','group_id'];
 
     public function group() {

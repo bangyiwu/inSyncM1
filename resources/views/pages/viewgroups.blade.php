@@ -6,6 +6,7 @@
 @if ($count > 0)
     <div class="card">
     <div class="card-body">  
+        <h1>My Groups</h1>
         <table class="table">
             <thead>
               <tr>
@@ -22,7 +23,10 @@
                     <tr>
                         <th scope="row">{{$row}}</th>
                         <td>{{ $group->name }}</td>
-                        <td><a href="/viewgroups/schedule/{{$group->id}}"><button type="button" class="btn btn-primary">Schedule Event</button></a> <a href="/viewgroups/events/{{$group->id}}"><button type="button" class="btn btn-primary">View/Edit Event</button></a></td>
+                        <td>
+                                <a href="/viewgroups/schedule/{{$group->id}}"><button type="button" class="btn btn-primary">Schedule Event</button></a>
+                                <a href="/viewgroups/events/{{$group->id}}"><button type="button" class="btn btn-primary">View/Edit Event</button></a>
+                        </td>
                         
                     </tr>
                  @endforeach       

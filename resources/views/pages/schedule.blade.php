@@ -9,6 +9,7 @@
     <input type="hidden" name="group_id" value = {{$group_id}}>
     <input type="submit" class=>
 </form>
+
 </div>
 @if ($errors->any())
     <div class="alert alert-danger">

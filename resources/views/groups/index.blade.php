@@ -4,10 +4,8 @@
 @if($count > 0)
 <div class="container">    
     <div class="card">
-        <div class="card-header">My Groups</div>
-    
         <div class='card-body'>
-            
+            <h1>Manage Groups</h1>
             <table class="table">
                 <thead>
                     <tr>

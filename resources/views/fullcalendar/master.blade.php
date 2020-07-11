@@ -9,6 +9,8 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -37,7 +39,7 @@
       <p>
         <input type='checkbox' id='drop-remove' />
         <label for='drop-remove'>remove after drop</label>
-        <button class="btn btn-sm btn-success" id = "newFastEvent">Create fast event</button>
+        <button class="btn btn-sm btn-success green" id = "newFastEvent">Create fast event</button>
       </p>
     </div>
 

@@ -75,3 +75,8 @@ Route::get('/makeadmin/{groupID}/{userID}', 'GroupController@makeAdmin')->name('
 Route::get('/revokeadmin/{groupID}/{userID}', 'GroupController@revokeAdmin')->name('groups.revokeAdmin');
 
 Route::get('/leavegroup/{groupID}', 'GroupController@leaveGroup')->name('groups.leave');
+
+Route::get('/attendance/{eventID}', 'AttendanceController@show')->name('attendance.show');
+Route::post('/attendance-store', 'AttendanceController@store')->name('attendance.store');;
+
+
