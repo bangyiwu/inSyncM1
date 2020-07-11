@@ -77,9 +77,9 @@ class EventController extends Controller
         $thisUser = auth()->user();
         $event = Event::findOrFail($id);
         $events = Event::all();
-       
+        $users = User::all();
 
-        return view('pages.show', ['event' => $event, 'events'=>$events]);
+        return view('pages.show', ['event' => $event, 'events'=>$events, 'users'=>$users]);
     }
 
 

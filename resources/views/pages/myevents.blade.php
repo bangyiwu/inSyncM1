@@ -26,7 +26,11 @@
                         <td>{{$event->location}}</td>
                         <td>{{$event->start}}</td>
                         @foreach ($events as $innerevent)
-                            @if(($event->location == $innerevent->location) && ($event->start == $innerevent->start) && ($event->id !== $innerevent->id))
+                            @if(($event->location == $innerevent->location) && 
+                            (($event->end < $innerevent->end && $event->end > $innerevent->start) ||
+                            ($event->start > $innerevent->start && $event->start < $innerevent->end)||
+                            ($event->start <= $innerevent->start && $event->end >= $innerevent->end))
+                            && ($event->id !== $innerevent->id))
                                 @php ($conflict = true)
                             @endif
                         @endforeach
