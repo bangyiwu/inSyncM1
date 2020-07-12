@@ -8,6 +8,7 @@
     <h5 class="underlined-top">{{$groupEvent->description}}</p>
     <h3>This event clashes with:</h3>
     <table class="table table-dark">
+      @php ($conflict = false)
                 <thead>
                   <tr>
                     <th scope="col">Event</th>
