@@ -16,6 +16,7 @@ use App\Group;
 
 
 #Route::get('/', 'FullCalendarController@index') ->name('index');
+Route::get('/test', function(){return view('pages.test');});
 
 Route::get('/', 'PagesController@index');
 Route::get('/myevents', 'EventController@index');
