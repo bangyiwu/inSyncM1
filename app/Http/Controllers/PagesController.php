@@ -9,8 +9,8 @@ use App\Group;
 class PagesController extends Controller
 {
     public function index() {
-        $title = 'Welcome to inSync';
-        return view('pages.index')->with('title', $title);
+        // $title = 'Welcome to inSync';
+        return redirect()->route('login');
     }
 
     public function myevents() {
