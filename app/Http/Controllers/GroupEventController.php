@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\GroupEvent;
 use App\Event;
+use App\User;
 use Illuminate\Http\Request;
 
 class GroupEventController extends Controller
@@ -28,7 +29,12 @@ class GroupEventController extends Controller
     public function show($id) {
         $groupEvent = GroupEvent::find($id);
         $events = Event::all();
-        return view('pages.viewgroupevent', ['groupEvent' => $groupEvent, 'events'=>$events, 'id'=>$id]);
+        $groupEvents =GroupEvent::all();
+        foreach($groupEvents as $item) {
+            $events[] = $item;
+        }
+        $users = User::all();
+        return view('pages.viewgroupevent', ['groupEvent' => $groupEvent, 'events'=>$events, 'id'=>$id, 'users'=>$users]);
     }
 
     public function update(Request $request){

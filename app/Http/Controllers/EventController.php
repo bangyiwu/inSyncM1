@@ -58,28 +58,36 @@ class EventController extends Controller
     {
         $thisUser = auth()->user();
         $userevents = Event::where('user_id', auth()->user()->id)->get();
+        $events = Event::where('user_id', auth()->user()->id)->get();
         $groups = $thisUser->groups()->paginate(99);
+        $groupEvents =[];
         foreach($groups as $group){
             $gees = $group->groupevents()->paginate(99);
             foreach($gees as $gee){
-                $userevents[] = $gee;
+                $groupEvents[] =$gee;
+                $events[] = $gee;
             }
         }
-        $sortedEvents = collect($userevents)->sortBy('start')->values();
+        $sortedEvents = collect($events)->sortBy('start')->values();
         $number = $sortedEvents->count();
         return view('pages.myevents', [
             'events' => $sortedEvents,
             'count' => $number,
-            ]);
+            'groupEvents'=>$groupEvents,
+            'userEvents'=>$userevents]);
     }
     public function show($id) {
         $id = intval($id);
         $thisUser = auth()->user();
         $event = Event::findOrFail($id);
         $events = Event::all();
-       
+        $groupEvents =GroupEvent::all();
+        foreach($groupEvents as $item) {
+            $events[] = $item;
+        }
+        $users = User::all();
 
-        return view('pages.show', ['event' => $event, 'events'=>$events]);
+        return view('pages.show', ['event' => $event, 'events'=>$events, 'users'=>$users, 'groupEvents'=>$groupEvents]);
     }
 
 

@@ -29,8 +29,8 @@ class ScheduleController extends Controller
        $start = $request->datetime;
        $startedAt= Carbon::createFromFormat('Y-m-d\TH:i', $start);
        $events = Event::all();
-       $users = User::all();
        $group_id = $request->group_id;
+       $users = Group::find($group_id)->users()->paginate(99);
        $data = ['events' => $events, 'users' => $users, 'start' => $startedAt];
        return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $startedAt, 'group_id' => $group_id]);
     }
