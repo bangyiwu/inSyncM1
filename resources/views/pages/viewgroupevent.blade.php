@@ -7,25 +7,41 @@
     <h3>Description:</h3>
     <h5 class="underlined-top">{{$groupEvent->description}}</p>
     <h3>This event clashes with:</h3>
-    <p>
-         @foreach ($events as $innerevent)
-         @if(($groupEvent->location == $innerevent->location) && 
-         (($groupEvent->end < $innerevent->end && $groupEvent->end > $innerevent->start) ||
-         ($groupEvent->start > $innerevent->start && $groupEvent->start < $innerevent->end)||
-         ($groupEvent->start <= $innerevent->start && $groupEvent->end >= $innerevent->end)||
-         ($groupEvent->start == $innerevent->start))
-         && ($groupEvent->id !== $innerevent->id))
-            <div class="overlap">
-              {{$innerevent->title}} booked by 
-              @foreach ($users as $item)
-                  @if ($innerevent->user_id == $item->id)
-                      {{$item->name}}
-                  @endif
-              @endforeach
-            </div>
-            @endif
-        @endforeach 
-    </p>
+    <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Event</th>
+                    <th scope="col">Booked By</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($events as $innerevent)
+                        <tr>
+                            @if(($groupEvent->location == $innerevent->location) && 
+                            (($groupEvent->end < $innerevent->end && $groupEvent->end > $innerevent->start) ||
+                            ($groupEvent->start > $innerevent->start && $groupEvent->start < $innerevent->end)||
+                            ($groupEvent->start <= $innerevent->start && $groupEvent->end >= $innerevent->end) ||
+                            ($groupEvent->start == $innerevent->start))
+                            && ($groupEvent->id !== $innerevent->id))
+                                @php ($conflict = true)
+                                <td>
+                                    {{$innerevent->title}}
+                                </td>
+                                <td>
+                                    @foreach ($users as $item)
+                                        @if ($innerevent->user_id == $item->id)
+                                            {{$item->name}}
+                                        @endif
+                                    @endforeach
+                                </td>
+                            @endif
+                        </tr>
+                    @endforeach 
+                </tbody>
+              </table>
+                @if ($conflict == false)
+                    <p>This event does not clash with any other event</p>
+                @endif
 
     <div class="container" style="margin-top: 30px">
       <div class="row">
