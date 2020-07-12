@@ -27,17 +27,19 @@
     <div id="app">
         {{-- @include('inc.navbar')
         @include('fullcalendar.modal-fastEvents') --}}
-       
             
         <div class="container" style="padding: 50px 50px 50px">
                 <div class="row justify-content-center">
                     
-
+                      
                     <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header text-center">{{ __('Welcome to inSync') }}</div>
-            
-                            <div class="card-body">
+                        {{-- <div class="card">            
+                            <div class="card-body"> --}}
+                                <div class="text-center">
+                                    <img class="mb-1" src="{{ URL::to('/assets/images/logo.png') }}" alt="" width="72" height="72">
+                                    <h3 class="card-header text-center mb-4">{{ __('Log in to inSync') }}</h3>
+                        
+                                </div>  
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
             
@@ -108,7 +110,7 @@
                     <a class="txt2" href="/register">
                         Sign Up
                     </a>
-                    <div style="margin-top: 10px"><img src='{{ asset('assets/images/logo.png') }}' style="max-width:7%" alt="logo"></div>
+                    {{-- <div style="margin-top: 10px"><img src='{{ asset('assets/images/logo.png') }}' style="max-width:7%" alt="logo"></div> --}}
                 </div>
             </div>
       
