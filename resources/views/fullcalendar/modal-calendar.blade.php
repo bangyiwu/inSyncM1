@@ -20,13 +20,13 @@
                 <div class="form-group row">
                     <label for="start" class="col-sm-4 col-form-label">Start time</label>
                     <div class="col-sm-8">
-                      <input type="text" name="start" class="form-control date-times"  id="start">
+                      <input type="datetime-local" name="start" class="form-control"  id="start">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="end" class="col-sm-4 col-form-label">End time</label>
                     <div class="col-sm-8">
-                      <input type="text" name="end" class="form-control date-times" id="end">
+                      <input type="datetime-local" name="end" class="form-control" id="end">
                     </div>
                   </div>
                   <div class="form-group row">

@@ -24,9 +24,9 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3',
-            'start' => 'date_format:Y-m-d H:i:s|before:end',
-            'end' => 'date_format:Y-m-d H:i:s|after:start'
+            'title' => 'required|min:1',
+            'start' => 'before:end',
+            'end' => 'after:start'
 
         ];
     }

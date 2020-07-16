@@ -11019,3 +11019,9 @@ a.text-dark:focus {
   border-color: #f6f7f9;
   padding-bottom: 1px;
 }
+
+.right {
+  position: absolute;
+  height: 50px;
+  right: 522px;
+} 

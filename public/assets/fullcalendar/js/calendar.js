@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
         let title = element.event.title;
         $("#modalCalendar input[name='title']").val(title);
 
-        let start = moment(element.event.start).format("DD/MM/YYYY HH:mm:ss");
+        let start = moment(element.event.start).format("YYYY-MM-DDTHH:mm");
         $("#modalCalendar input[name='start']").val(start);
 
-        let end = moment(element.event.end).format("DD/MM/YYYY HH:mm:ss");
+        let end = moment(element.event.end).format("YYYY-MM-DDTHH:mm");
         $("#modalCalendar input[name='end']").val(end);
 
         let color = element.event.backgroundColor;

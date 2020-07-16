@@ -108,9 +108,9 @@ $(function($){
         
         let title = $("#modalCalendar input[name='title']").val();
         
-        let start = moment($("#modalCalendar input[name='start']").val(),"DD/MM/YYYY HH:mm:ss").format("YYYY-MM-DD HH:mm:ss");
+        let start = moment($("#modalCalendar input[name='start']").val(),"YYYY-MM-DDTHH:mm").format("YYYY-MM-DD HH:mm:ss");
         
-        let end = moment($("#modalCalendar input[name='end']").val(),"DD/MM/YYYY HH:mm:ss").format("YYYY-MM-DD HH:mm:ss");
+        let end = moment($("#modalCalendar input[name='end']").val(),"YYYY-MM-DDTHH:mm").format("YYYY-MM-DD HH:mm:ss");
         
         let color =  $("#modalCalendar input[name='color']").val();
 

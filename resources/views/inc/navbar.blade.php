@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="margin-bottom: 30px">
+    <a href="{{ url('/dashboard') }}"><img class="mr-2" src="{{ URL::to('/assets/images/logo.png') }}" alt="" width="36" height="36"></a>
     @if(Auth::guest())
         <a class="navbar-brand" href="{{ url('/') }}">
             {{config('app.name', 'inSync')}}
@@ -25,6 +26,12 @@
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
                             <a class="dropdown-item" href="/viewgroups">My Groups</a>
                         <a class="dropdown-item" href="{{ route('groups.index') }}">Edit Groups</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Management</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="/location">Facilities Management</a>
                         </div>
                     </li>
                 </ul>

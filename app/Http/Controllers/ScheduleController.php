@@ -52,4 +52,37 @@ class ScheduleController extends Controller
         return view('pages.groupevents', ['group_id' => $group_id, 'groupevents' => $groupevents, 'group' => $group]);
     }
 
+    public function location(){
+        $groupevents = GroupEvent::all();
+        $events = Event::all();
+        foreach($groupevents as $groupevent){
+                $events[] =$groupevent;
+            }
+        return view('pages.location', ['events'=>$events]);
+    }
+
+    public function at($location){
+        $groupevents = GroupEvent::where('location', $location)->get();
+        $events = Event::where('location', $location)->get();
+        foreach($groupevents as $groupevent){
+                $events[] =$groupevent;
+            }
+        $count = $events->count();
+        $users = User::all();
+        $sortedEvents = collect($events)->sortBy('start')->values();
+        return view('pages.locatevents', ['events'=>$sortedEvents, 'location'=>$location, 'count'=>$count, 'users'=>$users]);
+    }
+
+    public function conflict(){
+        $groupevents = GroupEvent::all();
+        $events = Event::all();
+        foreach($groupevents as $groupevent){
+                $events[] =$groupevent;
+            }
+        $count = $events->count();
+        $users = User::all();
+        $sortedEvents = collect($events)->sortBy('start')->values();
+        return view('pages.conflicts', ['events'=>$sortedEvents, 'count'=>$count, 'users'=>$users]);
+    }
+
 }

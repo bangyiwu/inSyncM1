@@ -90,13 +90,13 @@
                               <div class="form-group row">
                                   <label for="start" class="col-sm-4 col-form-label">Start time</label>
                                   <div class="col-sm-8">
-                                    <input type="datetime" name="start" class="form-control date-times"  id="start" value="{{$start}}">
+                                    <input type="datetime-local" name="start" class="form-control date-times"  id="start" value="{{$start}}">
                                   </div>
                                 </div>
                                 <div class="form-group row">
                                   <label for="end" class="col-sm-4 col-form-label">End time</label>
                                   <div class="col-sm-8">
-                                    <input type="datetime" name="end" class="form-control date-times" id="end" value="{{$start}}">
+                                    <input type="datetime-local" name="end" class="form-control date-times" id="end" value="{{$start}}">
                                   </div>
                                 </div>
                                 <div class="form-group row">

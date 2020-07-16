@@ -80,3 +80,7 @@ Route::get('/attendance/{eventID}', 'AttendanceController@show')->name('attendan
 Route::post('/attendance-store', 'AttendanceController@store')->name('attendance.store');;
 
 
+Route::get('/location', 'ScheduleController@location')->name('location.show');
+Route::get('/location/conflict', 'ScheduleController@conflict')->name('location.conflict');
+Route::get('/location/{location}', 'ScheduleController@at')->name('location.at');
+

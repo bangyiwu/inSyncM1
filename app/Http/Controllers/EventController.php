@@ -69,11 +69,12 @@ class EventController extends Controller
             }
         }
         $sortedEvents = collect($events)->sortBy('start')->values();
+        $sortedGroupEvents = collect($groupEvents)->sortBy('start')->values();
         $number = $sortedEvents->count();
         return view('pages.myevents', [
             'events' => $sortedEvents,
             'count' => $number,
-            'groupEvents'=>$groupEvents,
+            'groupEvents'=>$sortedGroupEvents,
             'userEvents'=>$userevents]);
     }
     public function show($id) {
