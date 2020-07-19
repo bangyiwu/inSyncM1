@@ -26,10 +26,10 @@ Route::get('/addevent', 'PagesController@addevent');
 
 Route::get('/editgroups', 'PagesController@editgroups');
 Route::get('/viewgroups', 'GroupController@mygroups' )->name('viewgroups');
-Route::get('/viewgroups/schedule/{group_id}', 'ScheduleController@index' );
+Route::get('/viewgroups/schedule/{group_id}', 'ScheduleController@index' )->name('schedule');
 Route::get('/viewgroups/events/{group_id}', 'ScheduleController@show' );
 Route::post('/viewgroups/date', 'ScheduleController@date');
-Route::get('/groupevents/{id}', 'GroupEventController@show');
+Route::get('/groupevents/{id}', 'GroupEventController@show')->name('routeGroupEventShow');
 Route::get('/viewgroups/time', function(){return view('pages.time');
 });
 
@@ -38,7 +38,7 @@ Route::get('/editgroups', 'GroupController@index');
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index');
+Route::get('/dashboard', 'HomeController@index')->name('home');
 
 Route::get('/calendar', 'FullCalendarController@index') ->name('index');
 Route::get('/load-events', 'EventController@loadEvents') ->name('routeLoadEvents');

@@ -8,7 +8,17 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="message"></div>
+          <div class="">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+          @endif
+        </div>
             <form id="formFastEvent">
                 <div class="form-group row">
                   <label for="title" class="col-sm-4 col-form-label">Title</label>
@@ -20,13 +30,13 @@
                 <div class="form-group row">
                     <label for="start" class="col-sm-4 col-form-label">Start time</label>
                     <div class="col-sm-8">
-                      <input type="text" name="start" class="form-control time"  id="start">
+                      <input type="time" name="start" class="form-control time"  id="start">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="end" class="col-sm-4 col-form-label">End time</label>
                     <div class="col-sm-8">
-                      <input type="text" name="end" class="form-control time" id="end">
+                      <input type="time" name="end" class="form-control time" id="end">
                     </div>
                   </div>
                   <div class="form-group row">

@@ -3,6 +3,11 @@
 @section('content')
 <div class="card">
   <div class="card-body">
+    @if(session()->has('message'))
+              <div class="alert alert-danger">
+                {!! session('message') !!}
+              </div>
+          @endif
     <h2 class="underlined">Details of {{$groupEvent->title}} on {{$groupEvent->start}}</h2>
     <h3>Description:</h3>
     <h5 class="underlined-top">{{$groupEvent->description}}</p>

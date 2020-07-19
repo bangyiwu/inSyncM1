@@ -117,7 +117,7 @@
                                     <textarea name="location" id="location" cols="40" rows = "1"></textarea>
                                   </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">
+                                <button class="btn btn-primary" id="ajaxSubmit">
                                     Create
                                 </button>
                         </form>
@@ -126,5 +126,6 @@
             </div>
             <!-- End Add Modal -->
             <a href="/viewgroups/schedule/{{$group_id}}" class="btn btn-success" role="button">Try another time</a>
+
 
 @endsection

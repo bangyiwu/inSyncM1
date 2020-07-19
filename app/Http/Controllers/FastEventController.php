@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\FastEvent;
 use Illuminate\Http\Request;
 use Illuminate\Http\FastEventRequest;
+use Illuminate\Http\EventRequest;
+
 
 class FastEventController extends Controller
 {
@@ -14,6 +16,7 @@ class FastEventController extends Controller
     }
 
     public function store(Request $request){
+        
         FastEvent::create([
             'title' => request('title'),
             'start' => request('start'),

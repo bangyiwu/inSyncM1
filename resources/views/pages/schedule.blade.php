@@ -13,6 +13,11 @@
                 </ul>
             </div>
         @endif
+        @if(session()->has('message'))
+              <div class="alert alert-danger">
+                {!! session('message') !!}
+              </div>
+          @endif
         <h3>Enter your preferred time here: </h3>
         <form action="/viewgroups/date" method="post" class="pt-3">
             @csrf

@@ -24,7 +24,7 @@ class FastEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:3',
+            'title' => 'required|min:1',
             'start' => 'date_format:H:i:s|before:end',
             'end' => 'date_format:H:i:s|after:start'
 

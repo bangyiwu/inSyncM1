@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Group;
 use App\User;
 use App\Leader;
+use Validator;
+use Redirect;
 
 class GroupController extends Controller
 {
@@ -60,6 +62,17 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = \Validator::make($request->all(), [
+            'name' => 'required',
+         ]);
+
+        if ($validator->fails())
+        {
+            // return redirect()->route('schedule')->with('message', 'Event not created')->with('group_id', 16);
+            return Redirect::route('groups.index')->with('errormsg', 'Enter a valid name!');
+        }
+
         $user = auth()->user();
 
         $newGroup = new Group;

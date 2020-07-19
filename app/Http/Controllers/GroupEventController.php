@@ -6,11 +6,29 @@ use App\GroupEvent;
 use App\Event;
 use App\User;
 use Illuminate\Http\Request;
+use Validator;
+use Redirect;
+
 
 class GroupEventController extends Controller
 {
 
     public function store(Request $request){
+
+        $validator = \Validator::make($request->all(), [
+            'title' => 'required',
+            'start' => 'before:end',
+            'end' => 'after:start'
+         ]);
+
+        if ($validator->fails())
+        {
+            // return redirect()->route('schedule')->with('message', 'Event not created')->with('group_id', 16);
+            return Redirect::route('schedule', [request('group_id')])->with('message', 'Event not created, check if: <br>
+              -Title was entered <br>
+              -Start time is before end time');
+        }
+
         GroupEvent::create(
             [
                 'title' => request('title'),
@@ -40,6 +58,20 @@ class GroupEventController extends Controller
     }
 
     public function update(Request $request){
+        $validator = \Validator::make($request->all(), [
+            'title' => 'required',
+            'start' => 'before:end',
+            'end' => 'after:start'
+         ]);
+
+        if ($validator->fails())
+        {
+            // return redirect()->route('schedule')->with('message', 'Event not created')->with('group_id', 16);
+            return Redirect::route('routeGroupEventShow', [request('id')])->with('message', 'Event not updated, check if: <br>
+              -Title was entered <br>
+              -Start time is before end time');
+        }
+
         $event = GroupEvent::where('id', $request->id)->first();
         $event->fill($request->all());
         $event->save();

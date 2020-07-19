@@ -5,6 +5,11 @@
 <div class="container">    
     <div class="card">
         <div class='card-body'>
+            @if(session()->has('errormsg'))
+            <div class="alert alert-danger">
+                {{ session()->get('errormsg') }}
+            </div>
+        @endif    
             <h1>Manage Groups</h1>
             <table class="table">
                 <thead>
