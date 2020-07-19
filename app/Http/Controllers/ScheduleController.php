@@ -32,7 +32,8 @@ class ScheduleController extends Controller
        $group_id = $request->group_id;
        $users = Group::find($group_id)->users()->paginate(99);
        $data = ['events' => $events, 'users' => $users, 'start' => $startedAt];
-       return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $startedAt, 'group_id' => $group_id]);
+       $time = date('Y-m-d\TH:i:s', strtotime($start));
+       return view('pages.time', ['events' => $events, 'users'=> $users,  'start'=> $startedAt, 'time'=>$time, 'group_id' => $group_id]);
     }
 
     public function index($group_id) {

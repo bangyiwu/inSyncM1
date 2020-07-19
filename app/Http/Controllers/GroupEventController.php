@@ -34,7 +34,9 @@ class GroupEventController extends Controller
             $events[] = $item;
         }
         $users = User::all();
-        return view('pages.viewgroupevent', ['groupEvent' => $groupEvent, 'events'=>$events, 'id'=>$id, 'users'=>$users]);
+        $start = date('Y-m-d\TH:i:s', strtotime($groupEvent->start));
+        $end = date('Y-m-d\TH:i:s', strtotime($groupEvent->end));
+        return view('pages.viewgroupevent', ['groupEvent' => $groupEvent, 'events'=>$events, 'id'=>$id, 'users'=>$users, 'start'=>$start, 'end'=>$end]);
     }
 
     public function update(Request $request){
