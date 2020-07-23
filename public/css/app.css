@@ -11025,3 +11025,8 @@ a.text-dark:focus {
   height: 50px;
   right: 522px;
 } 
+
+.bold {
+  font-weight: bolder;
+  color: darkslategrey;
+}

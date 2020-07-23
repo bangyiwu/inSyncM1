@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GroupEvent;
+use App\Group;
 use App\Event;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class GroupEventController extends Controller
               -Start time is before end time');
         }
 
-        GroupEvent::create(
+        $groupEvent = GroupEvent::create(
             [
                 'title' => request('title'),
                 'group_id'=>request('group_id'),
@@ -41,6 +42,11 @@ class GroupEventController extends Controller
                 'location' => request('location'),
             ]
         );
+        $group = Group::find(request('group_id'));
+        $groupUsers = $group->users()->paginate(99);
+        foreach($groupUsers as $user) {
+            $user->notify(new \App\Notifications\GroupNotice($groupEvent, $group));
+        }
         return redirect()->route('viewgroups')->with('message', 'Event Created!');
     }
 
@@ -80,5 +86,12 @@ class GroupEventController extends Controller
     public function destroy($id){
         GroupEvent::find($id)->delete();
         return redirect()->route('viewgroups')->with('message', 'Event Deleted!');
+    }
+
+    public function notifications(){
+        $count = count(auth()->user()->unreadNotifications);
+        auth()->user()->unreadNotifications->markAsRead();
+        
+        return view('pages.notifications', ['notifications' => auth()->user()->unreadNotifications, 'count'=> $count]);
     }
 }
