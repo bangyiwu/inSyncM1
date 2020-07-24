@@ -29,7 +29,7 @@ Route::get('/viewgroups', 'GroupController@mygroups' )->name('viewgroups');
 Route::get('/viewgroups/schedule/{group_id}', 'ScheduleController@index' )->name('schedule');
 Route::get('/viewgroups/events/{group_id}', 'ScheduleController@show' );
 Route::post('/viewgroups/date', 'ScheduleController@date');
-Route::get('/groupevents/{id}', 'GroupEventController@show')->name('routeGroupEventShow');
+Route::get('/groupevents/{id}/{groupID}', 'GroupEventController@show')->name('routeGroupEventShow');
 Route::get('/viewgroups/time', function(){return view('pages.time');
 });
 

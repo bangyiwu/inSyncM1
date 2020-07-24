@@ -25,7 +25,7 @@
                             <td>{{$event->title}}</td>
                             <td>{{$event->location}}</td>
                             <td>{{$event->start}}</td>
-                            <td><a href="/groupevents/{{$event->id}}"><button type="button" class="btn btn-primary" >View/Edit Details</button></a> <a href="/attendance/{{$event->id}}"><button type="button" class="btn btn-primary" >Attendance</button></a></td>
+                        <td><a href="/groupevents/{{$event->id}}/{{$group->id}}"><button type="button" class="btn btn-primary" >View/Edit Details</button></a> <a href="/attendance/{{$event->id}}"><button type="button" class="btn btn-primary" >Attendance</button></a></td>
                         </tr>
                 @endforeach
             </tbody>

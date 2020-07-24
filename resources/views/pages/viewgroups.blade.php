@@ -23,9 +23,11 @@
                     <tr>
                         <th scope="row">{{$row}}</th>
                         <td>{{ $group->name }}</td>
-                        <td>
+                        <td> 
+                                <a href="/viewgroups/events/{{$group->id}}"><button type="button" class="btn btn-primary">View/Edit Events</button></a>
+                            @if ($group->leaders()->find($thisUser->id)) 
                                 <a href="/viewgroups/schedule/{{$group->id}}"><button type="button" class="btn btn-primary">Schedule Event</button></a>
-                                <a href="/viewgroups/events/{{$group->id}}"><button type="button" class="btn btn-primary">View/Edit Event</button></a>
+                            @endif
                         </td>
                         
                     </tr>

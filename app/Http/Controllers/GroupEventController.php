@@ -50,17 +50,19 @@ class GroupEventController extends Controller
         return redirect()->route('viewgroups')->with('message', 'Event Created!');
     }
 
-    public function show($id) {
+    public function show($id, $groupID) {
         $groupEvent = GroupEvent::find($id);
+        $group = Group::where('id', $groupID)->first();
         $events = Event::all();
         $groupEvents =GroupEvent::all();
         foreach($groupEvents as $item) {
             $events[] = $item;
         }
         $users = User::all();
+        $thisUser = auth()->user();
         $start = date('Y-m-d\TH:i:s', strtotime($groupEvent->start));
         $end = date('Y-m-d\TH:i:s', strtotime($groupEvent->end));
-        return view('pages.viewgroupevent', ['groupEvent' => $groupEvent, 'events'=>$events, 'id'=>$id, 'users'=>$users, 'start'=>$start, 'end'=>$end]);
+        return view('pages.viewgroupevent', ['group'=>$group, 'thisUser' => $thisUser, 'groupEvent' => $groupEvent, 'events'=>$events, 'id'=>$id, 'users'=>$users, 'start'=>$start, 'end'=>$end]);
     }
 
     public function update(Request $request){

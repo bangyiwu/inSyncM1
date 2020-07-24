@@ -50,7 +50,8 @@
                         </li>
                     @endif
                 @else
-                    <li class="nav-item dropdown">
+                <li class="nav-item badge red">{{count(auth()->user()->unreadNotifications)}}</li>
+                <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
@@ -61,6 +62,9 @@
                             </a>
                             <a class="dropdown-item " href="/notifications" id="markasread" onclick="markNotficationAsRead()">
                                 Notifications <span class="badge red">{{count(auth()->user()->unreadNotifications)}}</span>
+                            </a>
+                            <a class="dropdown-item" href="{{ url("/password/reset") }}">
+                                Change Password
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
