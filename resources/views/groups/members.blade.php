@@ -9,8 +9,8 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Members</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Admins</th>
+                {{-- <th scope="col">Actions</th> --}}
               </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                 <tr>
                     <th scope="row">{{$row}}</th>
                     <td>{{ $user->name }}</td>
-                    <td>
+                    {{-- <td>
                         @if ($user->id != $currentUser)
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
@@ -51,7 +51,7 @@
                         </div>
                         <!-- End Add Modal -->
                         @endif
-                    </td>
+                    </td> --}}
                 </tr>
                 @endif
             @endforeach
@@ -70,7 +70,7 @@
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Members</th>
-                    <th scope="col">Actions</th>
+                    {{-- <th scope="col">Actions</th> --}}
                   </tr>
                 </thead>
                 <tbody>
@@ -81,7 +81,7 @@
                         <tr>
                             <th scope="row">{{$row}}</th>
                             <td>{{ $user->name }}</td>
-                            <td>
+                            {{-- <td>
                                 @if ($user->id != $currentUser)
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
@@ -110,7 +110,7 @@
                                 </div>
                                 <!-- End Add Modal -->
                                 @endif
-                            </td>
+                            </td> --}}
                         </tr>
                         @endif
                     @endforeach

@@ -48,19 +48,21 @@
                 @if ($conflict == false)
                     <p>This event does not clash with any other event</p>
                 @endif
-
-    <div class="container" style="margin-top: 30px">
-      <div class="row">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#exampleModal">
-        Edit Group Event
-        </button>
-        <form action="{{route('groupEvent.delete', $groupEvent->id)}}" method='POST'>
-          {{csrf_field()}}
-          {{method_field('DELETE')}}
-          <button type="submit" class = 'btn btn-danger'>Delete</button>
-      </form>
-    </div>
+    
+    @if ($group->leaders()->find($thisUser->id)) 
+      <div class="container" style="margin-top: 30px">
+        <div class="row">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#exampleModal">
+          Edit Group Event
+          </button>
+          <form action="{{route('groupEvent.delete', $groupEvent->id)}}" method='POST'>
+            {{csrf_field()}}
+            {{method_field('DELETE')}}
+            <button type="submit" class = 'btn btn-danger'>Delete</button>
+        </form>
+      </div>
+    @endif
   
         <!-- Start Add Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
