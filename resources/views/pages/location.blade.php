@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row">   <h1 class="">Faculties Management</h1>
+    <div class="row">   <h1 class="">Facilties Management</h1>
         <a href="/location/conflict"><button type="button" class="btn btn-danger ml-5 right">View all conflicts </button></a></div>
  
     <div class="row mt-5 justify-content-center">
