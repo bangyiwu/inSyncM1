@@ -42,6 +42,7 @@ return array(
     'App\\Http\\Requests\\EventRequest' => $baseDir . '/app/Http/Requests/EventRequest.php',
     'App\\Http\\Requests\\FastEventRequest' => $baseDir . '/app/Http/Requests/FastEventRequest.php',
     'App\\Leader' => $baseDir . '/app/Leader.php',
+    'App\\Notifications\\GroupNotice' => $baseDir . '/app/Notifications/GroupNotice.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

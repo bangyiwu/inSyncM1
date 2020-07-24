@@ -84,3 +84,7 @@ Route::get('/location', 'ScheduleController@location')->name('location.show');
 Route::get('/location/conflict', 'ScheduleController@conflict')->name('location.conflict');
 Route::get('/location/{location}', 'ScheduleController@at')->name('location.at');
 
+Route::get('/notifications', 'GroupEventController@notifications')->name('notification.show');
+Route::get('/markAsRead', function(){return view('pages.time');
+});
+

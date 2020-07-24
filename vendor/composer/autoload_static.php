@@ -532,6 +532,7 @@ class ComposerStaticInit6f8ad3c6b3544d0940ac225da5a2e70f
         'App\\Http\\Requests\\EventRequest' => __DIR__ . '/../..' . '/app/Http/Requests/EventRequest.php',
         'App\\Http\\Requests\\FastEventRequest' => __DIR__ . '/../..' . '/app/Http/Requests/FastEventRequest.php',
         'App\\Leader' => __DIR__ . '/../..' . '/app/Leader.php',
+        'App\\Notifications\\GroupNotice' => __DIR__ . '/../..' . '/app/Notifications/GroupNotice.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
